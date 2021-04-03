@@ -2,6 +2,13 @@
 ### Do not make changes to this file directly
 
 
+type Post {
+  body: String!
+  id: Int!
+  title: String!
+  userId: Int!
+}
+
 type Query {
-  ok: Boolean!
+  posts(limit: Int = 10, start: Int = 0): [Post]
 }

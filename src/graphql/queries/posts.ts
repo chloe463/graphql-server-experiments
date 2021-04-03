@@ -1,0 +1,13 @@
+import { intArg, list, queryField } from "nexus";
+
+export const posts = queryField("posts", {
+  type: list("Post"),
+  args: {
+    start: intArg({ default: 0 }),
+    limit: intArg({ default: 10 }),
+  },
+  resolve: async (_root, args, context) => {
+    const { jsonPlaceholderClient } = context;
+    return await jsonPlaceholderClient.fetchPosts(args);
+  },
+});
