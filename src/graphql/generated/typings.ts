@@ -5,8 +5,21 @@
 
 
 import { Context } from "./../../context"
+import { core, connectionPluginCore } from "nexus"
 
-
+declare global {
+  interface NexusGenCustomOutputMethods<TypeName extends string> {
+    /**
+     * Adds a Relay-style connection to the type, with numerous options for configuration
+     *
+     * @see https://nexusjs.org/docs/plugins/connection
+     */
+    connectionField<FieldName extends string>(
+      fieldName: FieldName,
+      config: connectionPluginCore.ConnectionFieldConfig<TypeName, FieldName>
+    ): void
+  }
+}
 
 
 declare global {
@@ -28,11 +41,25 @@ export interface NexusGenScalars {
 }
 
 export interface NexusGenObjects {
+  PageInfo: { // root type
+    endCursor?: string | null; // String
+    hasNextPage: boolean; // Boolean!
+    hasPreviousPage: boolean; // Boolean!
+    startCursor?: string | null; // String
+  }
   Post: { // root type
     body: string; // String!
     id: number; // Int!
     title: string; // String!
     userId: number; // Int!
+  }
+  PostConnection: { // root type
+    edges?: Array<NexusGenRootTypes['PostEdge'] | null> | null; // [PostEdge]
+    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
+  }
+  PostEdge: { // root type
+    cursor: string; // String!
+    node?: NexusGenRootTypes['Post'] | null; // Post
   }
   Query: {};
 }
@@ -48,31 +75,67 @@ export type NexusGenRootTypes = NexusGenObjects
 export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
+  PageInfo: { // field return type
+    endCursor: string | null; // String
+    hasNextPage: boolean; // Boolean!
+    hasPreviousPage: boolean; // Boolean!
+    startCursor: string | null; // String
+  }
   Post: { // field return type
     body: string; // String!
     id: number; // Int!
     title: string; // String!
     userId: number; // Int!
   }
+  PostConnection: { // field return type
+    edges: Array<NexusGenRootTypes['PostEdge'] | null> | null; // [PostEdge]
+    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
+  }
+  PostEdge: { // field return type
+    cursor: string; // String!
+    node: NexusGenRootTypes['Post'] | null; // Post
+  }
   Query: { // field return type
+    postConnection: NexusGenRootTypes['PostConnection'] | null; // PostConnection
     posts: Array<NexusGenRootTypes['Post'] | null> | null; // [Post]
   }
 }
 
 export interface NexusGenFieldTypeNames {
+  PageInfo: { // field return type name
+    endCursor: 'String'
+    hasNextPage: 'Boolean'
+    hasPreviousPage: 'Boolean'
+    startCursor: 'String'
+  }
   Post: { // field return type name
     body: 'String'
     id: 'Int'
     title: 'String'
     userId: 'Int'
   }
+  PostConnection: { // field return type name
+    edges: 'PostEdge'
+    pageInfo: 'PageInfo'
+  }
+  PostEdge: { // field return type name
+    cursor: 'String'
+    node: 'Post'
+  }
   Query: { // field return type name
+    postConnection: 'PostConnection'
     posts: 'Post'
   }
 }
 
 export interface NexusGenArgTypes {
   Query: {
+    postConnection: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+    }
     posts: { // args
       limit: number | null; // Int
       start?: number | null; // Int
@@ -141,6 +204,7 @@ declare global {
   interface NexusGenPluginTypeConfig<TypeName extends string> {
   }
   interface NexusGenPluginFieldConfig<TypeName extends string, FieldName extends string> {
+    
   }
   interface NexusGenPluginInputFieldConfig<TypeName extends string, FieldName extends string> {
   }

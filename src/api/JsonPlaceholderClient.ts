@@ -1,4 +1,7 @@
 import axios, { AxiosInstance } from "axios";
+import { NexusGenObjects } from "../graphql/generated/typings";
+
+type Post = NexusGenObjects["Post"];
 
 const BASE_URL = "https://jsonplaceholder.typicode.com/";
 
@@ -10,16 +13,16 @@ export class JsonPlaceholderClient {
     });
   };
 
-  fetchPosts = async (args: any) => {
+  fetchPosts = async (args: any): Promise<Post[]> => {
     const params = {};
     Object.keys(args).forEach((key) => {
       params[`_${key}`] = args[key];
     });
-    const posts = await this.client.get("/posts", {
+    const res = await this.client.get<Post[]>("/posts", {
       params: {
         ...params,
       }
     });
-    return posts.data;
+    return res.data;
   };
 }

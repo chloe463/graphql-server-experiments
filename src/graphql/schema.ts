@@ -1,4 +1,4 @@
-import { makeSchema } from "nexus";
+import { connectionPlugin, makeSchema } from "nexus";
 import path from "path";
 import * as queries from "./queries";
 import * as types from "./types";
@@ -13,4 +13,5 @@ export const schema = makeSchema({
     module: path.join(__dirname, "/../context.ts"),
     export: "Context",
   },
+  plugins: [connectionPlugin()],
 });
