@@ -3,6 +3,10 @@ import { queryField } from "nexus";
 export const postConnection = queryField((t) => {
   t.connectionField("postConnection", {
     type: "Post",
+    nullable: false,
+    nonNullDefaults: {
+      output: true,
+    },
     resolve: async (_root, args, context) => {
       const { jsonPlaceholderClient } = context;
       const posts = await jsonPlaceholderClient.fetchPosts({

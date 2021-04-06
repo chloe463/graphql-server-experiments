@@ -54,12 +54,12 @@ export interface NexusGenObjects {
     userId: number; // Int!
   }
   PostConnection: { // root type
-    edges?: Array<NexusGenRootTypes['PostEdge'] | null> | null; // [PostEdge]
+    edges: NexusGenRootTypes['PostEdge'][]; // [PostEdge!]!
     pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
   }
   PostEdge: { // root type
     cursor: string; // String!
-    node?: NexusGenRootTypes['Post'] | null; // Post
+    node: NexusGenRootTypes['Post']; // Post!
   }
   Query: {};
 }
@@ -88,15 +88,15 @@ export interface NexusGenFieldTypes {
     userId: number; // Int!
   }
   PostConnection: { // field return type
-    edges: Array<NexusGenRootTypes['PostEdge'] | null> | null; // [PostEdge]
+    edges: NexusGenRootTypes['PostEdge'][]; // [PostEdge!]!
     pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
   }
   PostEdge: { // field return type
     cursor: string; // String!
-    node: NexusGenRootTypes['Post'] | null; // Post
+    node: NexusGenRootTypes['Post']; // Post!
   }
   Query: { // field return type
-    postConnection: NexusGenRootTypes['PostConnection'] | null; // PostConnection
+    postConnection: NexusGenRootTypes['PostConnection']; // PostConnection!
     posts: Array<NexusGenRootTypes['Post'] | null> | null; // [Post]
   }
 }

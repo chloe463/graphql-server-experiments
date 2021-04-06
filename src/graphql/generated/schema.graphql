@@ -38,7 +38,7 @@ type PostConnection {
   """
   https://facebook.github.io/relay/graphql/connections.htm#sec-Edge-Types
   """
-  edges: [PostEdge]
+  edges: [PostEdge!]!
 
   """
   https://facebook.github.io/relay/graphql/connections.htm#sec-undefined.PageInfo
@@ -51,7 +51,7 @@ type PostEdge {
   cursor: String!
 
   """https://facebook.github.io/relay/graphql/connections.htm#sec-Node"""
-  node: Post
+  node: Post!
 }
 
 type Query {
@@ -67,6 +67,6 @@ type Query {
 
     """Returns the last n elements from the list."""
     last: Int
-  ): PostConnection
+  ): PostConnection!
   posts(limit: Int = 10, start: Int = 0): [Post]
 }
