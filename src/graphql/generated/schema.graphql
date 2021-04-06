@@ -68,5 +68,5 @@ type Query {
     """Returns the last n elements from the list."""
     last: Int
   ): PostConnection!
-  posts(limit: Int = 10, start: Int = 0): [Post]
+  posts(limit: Int = 10, start: String = "0"): [Post]
 }

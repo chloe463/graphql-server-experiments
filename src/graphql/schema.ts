@@ -1,5 +1,5 @@
 import { connectionPlugin, makeSchema } from "nexus";
-import path from "path";
+import * as path from "path";
 import * as queries from "./queries";
 import * as types from "./types";
 

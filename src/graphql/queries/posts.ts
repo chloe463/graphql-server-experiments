@@ -1,9 +1,9 @@
-import { intArg, list, queryField } from "nexus";
+import { intArg, list, queryField, stringArg } from "nexus";
 
 export const posts = queryField("posts", {
   type: list("Post"),
   args: {
-    start: intArg({ default: 0 }),
+    start: stringArg({ default: "0" }),
     limit: intArg({ default: 10 }),
   },
   resolve: async (_root, args, context) => {

@@ -138,7 +138,7 @@ export interface NexusGenArgTypes {
     }
     posts: { // args
       limit: number | null; // Int
-      start?: number | null; // Int
+      start: string | null; // String
     }
   }
 }
