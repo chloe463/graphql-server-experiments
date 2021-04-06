@@ -3,6 +3,8 @@ import express from "express";
 import { createContext } from "./context";
 import { schema } from "./graphql/schema";
 
+const HOST = process.env.HOST || "localhost";
+const PORT = parseInt(process.env.PORT, 10) || 4000;
 
 const apolloServer = new ApolloServer({
   schema,
@@ -16,4 +18,6 @@ app.get("/ping", function (_, res) {
   res.send("pong");
 })
 
-app.listen(3000);
+app.listen(PORT, HOST, () => {
+  console.log(`Server is listening on ${HOST}:${PORT}`);
+});
