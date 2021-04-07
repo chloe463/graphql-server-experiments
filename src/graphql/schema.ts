@@ -15,3 +15,4 @@ export const schema = makeSchema({
   },
   plugins: [connectionPlugin()],
 });
+

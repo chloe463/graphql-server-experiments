@@ -55,7 +55,6 @@ describe("[Query] postConnection", () => {
 
     const { query } = createTestClient(server);
     const res = await query({ query: GET_POST_CONNECTION, variables : { first: 3, after: "0" }});
-    console.log({ res });
     expect(res).toMatchSnapshot();
   });
 });
