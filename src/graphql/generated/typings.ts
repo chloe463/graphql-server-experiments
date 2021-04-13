@@ -135,6 +135,7 @@ export interface NexusGenArgTypes {
       before?: string | null; // String
       first?: number | null; // Int
       last?: number | null; // Int
+      query?: string | null; // String
     }
     posts: { // args
       limit: number | null; // Int
