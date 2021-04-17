@@ -19,7 +19,7 @@ export class JsonPlaceholderClient {
     });
   };
 
-  fetchPosts = async (args: FetchPostsParams): Promise<Post[]> => {
+  fetchPosts = async (args: FetchPostsParams): Promise<{ posts: Post[], totalCount: number }> => {
     const params = {};
     Object.keys(args).forEach((key) => {
       params[`_${key}`] = args[key];
@@ -29,6 +29,6 @@ export class JsonPlaceholderClient {
         ...params,
       }
     });
-    return res.data;
+    return { posts: res.data, totalCount: res.headers["x-total-count"] };
   };
 }

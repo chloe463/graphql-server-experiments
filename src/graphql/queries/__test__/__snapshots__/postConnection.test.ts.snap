@@ -39,6 +39,7 @@ Object {
         "hasPreviousPage": false,
         "startCursor": null,
       },
+      "totalCount": 3,
     },
   },
   "errors": undefined,

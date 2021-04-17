@@ -8,7 +8,7 @@ export const posts = queryField("posts", {
   },
   resolve: async (_root, args, context) => {
     const { jsonPlaceholderClient } = context;
-    const posts = await jsonPlaceholderClient.fetchPosts(args);
+    const { posts } = await jsonPlaceholderClient.fetchPosts(args);
     return posts;
   },
 });
