@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[Query] comments returns comments 1`] = `
+Object {
+  "data": Object {
+    "comments": null,
+  },
+  "errors": Array [
+    [GraphQLError: jsonPlaceholderClient.fetchComments is not a function],
+  ],
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;

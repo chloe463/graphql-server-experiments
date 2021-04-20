@@ -2,6 +2,7 @@ import axios, { AxiosInstance } from "axios";
 import { NexusGenObjects } from "../graphql/generated/typings";
 
 type Post = NexusGenObjects["Post"];
+type Comment = NexusGenObjects["Comment"];
 
 const BASE_URL = "https://jsonplaceholder.typicode.com/";
 
@@ -31,4 +32,9 @@ export class JsonPlaceholderClient {
     });
     return { posts: res.data, totalCount: res.headers["x-total-count"] };
   };
+
+  fetchComments = async (postId: number): Promise<{ comments: Comment[] }> => {
+    const res = await this.client.get<Comment[]>(`/posts/${postId}/comments`);
+    return { comments: res.data };
+  }
 }

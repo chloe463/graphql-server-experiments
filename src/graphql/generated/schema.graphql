@@ -2,6 +2,14 @@
 ### Do not make changes to this file directly
 
 
+type Comment {
+  body: String!
+  email: String!
+  id: Int!
+  name: String!
+  postId: Int!
+}
+
 """
 PageInfo cursor, as defined in https://facebook.github.io/relay/graphql/connections.htm#sec-undefined.PageInfo
 """
@@ -43,6 +51,7 @@ type PostEdge {
 }
 
 type Query {
+  comments(postId: Int!): [Comment]
   postConnection(
     """Returns the elements in the list that come after the specified cursor"""
     after: String
