@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[Query] postConnection returns post list 1`] = `
+Object {
+  "data": Object {
+    "postConnection": Object {
+      "edges": Array [
+        Object {
+          "cursor": "1",
+          "node": Object {
+            "body": "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto",
+            "id": 1,
+            "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+            "userId": 1,
+          },
+        },
+        Object {
+          "cursor": "2",
+          "node": Object {
+            "body": "est rerum tempore vitae sequi sint nihil reprehenderit dolor beatae ea dolores neque fugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis qui aperiam non debitis possimus qui neque nisi nulla",
+            "id": 2,
+            "title": "qui est esse",
+            "userId": 1,
+          },
+        },
+        Object {
+          "cursor": "3",
+          "node": Object {
+            "body": "et iusto sed quo iure voluptatem occaecati omnis eligendi aut ad voluptatem doloribus vel accusantium quis pariatur molestiae porro eius odio et labore et velit aut",
+            "id": 3,
+            "title": "ea molestias quasi exercitationem repellat qui ipsa sit aut",
+            "userId": 1,
+          },
+        },
+      ],
+      "pageInfo": Object {
+        "endCursor": null,
+        "hasNextPage": true,
+        "hasPreviousPage": false,
+        "startCursor": null,
+      },
+    },
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;

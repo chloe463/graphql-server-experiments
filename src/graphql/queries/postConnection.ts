@@ -1,9 +1,12 @@
-import { queryField } from "nexus";
+import { queryField, stringArg } from "nexus";
 
 export const postConnection = queryField((t) => {
   t.connectionField("postConnection", {
     type: "Post",
     nullable: false,
+    additionalArgs: {
+      query: stringArg({ description: "Dummy arg" }),
+    },
     nonNullDefaults: {
       output: true,
     },
