@@ -10,9 +10,12 @@ export const postConnection = queryField((t) => {
     nonNullDefaults: {
       output: true,
     },
+    extendConnection: (t) => {
+      t.int("totalCount");
+    },
     resolve: async (_root, args, context) => {
       const { jsonPlaceholderClient } = context;
-      const posts = await jsonPlaceholderClient.fetchPosts({
+      const { posts, totalCount } = await jsonPlaceholderClient.fetchPosts({
         start: args.after,
         limit: args.first,
       });
@@ -24,6 +27,7 @@ export const postConnection = queryField((t) => {
       });
       return {
         edges,
+        totalCount,
         pageInfo: {
           hasNextPage: posts[posts.length - 1].id !== 100,
           hasPreviousPage: posts[0].id > 1,

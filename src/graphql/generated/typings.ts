@@ -53,15 +53,15 @@ export interface NexusGenObjects {
     title: string; // String!
     userId: number; // Int!
   }
-  PostConnection: { // root type
-    edges: NexusGenRootTypes['PostEdge'][]; // [PostEdge!]!
-    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
-  }
   PostEdge: { // root type
     cursor: string; // String!
     node: NexusGenRootTypes['Post']; // Post!
   }
   Query: {};
+  QueryPostConnection_Connection: { // root type
+    edges: NexusGenRootTypes['PostEdge'][]; // [PostEdge!]!
+    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
+  }
 }
 
 export interface NexusGenInterfaces {
@@ -87,17 +87,18 @@ export interface NexusGenFieldTypes {
     title: string; // String!
     userId: number; // Int!
   }
-  PostConnection: { // field return type
-    edges: NexusGenRootTypes['PostEdge'][]; // [PostEdge!]!
-    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
-  }
   PostEdge: { // field return type
     cursor: string; // String!
     node: NexusGenRootTypes['Post']; // Post!
   }
   Query: { // field return type
-    postConnection: NexusGenRootTypes['PostConnection']; // PostConnection!
+    postConnection: NexusGenRootTypes['QueryPostConnection_Connection']; // QueryPostConnection_Connection!
     posts: Array<NexusGenRootTypes['Post'] | null> | null; // [Post]
+  }
+  QueryPostConnection_Connection: { // field return type
+    edges: NexusGenRootTypes['PostEdge'][]; // [PostEdge!]!
+    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
+    totalCount: number; // Int!
   }
 }
 
@@ -114,17 +115,18 @@ export interface NexusGenFieldTypeNames {
     title: 'String'
     userId: 'Int'
   }
-  PostConnection: { // field return type name
-    edges: 'PostEdge'
-    pageInfo: 'PageInfo'
-  }
   PostEdge: { // field return type name
     cursor: 'String'
     node: 'Post'
   }
   Query: { // field return type name
-    postConnection: 'PostConnection'
+    postConnection: 'QueryPostConnection_Connection'
     posts: 'Post'
+  }
+  QueryPostConnection_Connection: { // field return type name
+    edges: 'PostEdge'
+    pageInfo: 'PageInfo'
+    totalCount: 'Int'
   }
 }
 

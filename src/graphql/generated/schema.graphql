@@ -34,18 +34,6 @@ type Post {
   userId: Int!
 }
 
-type PostConnection {
-  """
-  https://facebook.github.io/relay/graphql/connections.htm#sec-Edge-Types
-  """
-  edges: [PostEdge!]!
-
-  """
-  https://facebook.github.io/relay/graphql/connections.htm#sec-undefined.PageInfo
-  """
-  pageInfo: PageInfo!
-}
-
 type PostEdge {
   """https://facebook.github.io/relay/graphql/connections.htm#sec-Cursor"""
   cursor: String!
@@ -70,6 +58,19 @@ type Query {
 
     """Dummy arg"""
     query: String
-  ): PostConnection!
+  ): QueryPostConnection_Connection!
   posts(limit: Int = 10, start: String = "0"): [Post]
+}
+
+type QueryPostConnection_Connection {
+  """
+  https://facebook.github.io/relay/graphql/connections.htm#sec-Edge-Types
+  """
+  edges: [PostEdge!]!
+
+  """
+  https://facebook.github.io/relay/graphql/connections.htm#sec-undefined.PageInfo
+  """
+  pageInfo: PageInfo!
+  totalCount: Int!
 }
