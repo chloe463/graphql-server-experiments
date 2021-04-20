@@ -41,6 +41,13 @@ export interface NexusGenScalars {
 }
 
 export interface NexusGenObjects {
+  Comment: { // root type
+    body: string; // String!
+    email: string; // String!
+    id: number; // Int!
+    name: string; // String!
+    postId: number; // Int!
+  }
   PageInfo: { // root type
     endCursor?: string | null; // String
     hasNextPage: boolean; // Boolean!
@@ -75,6 +82,13 @@ export type NexusGenRootTypes = NexusGenObjects
 export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
+  Comment: { // field return type
+    body: string; // String!
+    email: string; // String!
+    id: number; // Int!
+    name: string; // String!
+    postId: number; // Int!
+  }
   PageInfo: { // field return type
     endCursor: string | null; // String
     hasNextPage: boolean; // Boolean!
@@ -92,6 +106,7 @@ export interface NexusGenFieldTypes {
     node: NexusGenRootTypes['Post']; // Post!
   }
   Query: { // field return type
+    comments: Array<NexusGenRootTypes['Comment'] | null> | null; // [Comment]
     postConnection: NexusGenRootTypes['QueryPostConnection_Connection']; // QueryPostConnection_Connection!
     posts: Array<NexusGenRootTypes['Post'] | null> | null; // [Post]
   }
@@ -103,6 +118,13 @@ export interface NexusGenFieldTypes {
 }
 
 export interface NexusGenFieldTypeNames {
+  Comment: { // field return type name
+    body: 'String'
+    email: 'String'
+    id: 'Int'
+    name: 'String'
+    postId: 'Int'
+  }
   PageInfo: { // field return type name
     endCursor: 'String'
     hasNextPage: 'Boolean'
@@ -120,6 +142,7 @@ export interface NexusGenFieldTypeNames {
     node: 'Post'
   }
   Query: { // field return type name
+    comments: 'Comment'
     postConnection: 'QueryPostConnection_Connection'
     posts: 'Post'
   }
@@ -132,6 +155,9 @@ export interface NexusGenFieldTypeNames {
 
 export interface NexusGenArgTypes {
   Query: {
+    comments: { // args
+      postId: number; // Int!
+    }
     postConnection: { // args
       after?: string | null; // String
       before?: string | null; // String
