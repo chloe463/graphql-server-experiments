@@ -51,7 +51,7 @@ type PostEdge {
 }
 
 type Query {
-  comments(postId: Int!): [Comment]
+  comments(postId: Int!): [Comment]!
   postConnection(
     """Returns the elements in the list that come after the specified cursor"""
     after: String

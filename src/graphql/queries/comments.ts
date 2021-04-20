@@ -1,7 +1,7 @@
 import { intArg, list, nonNull, queryField } from "nexus";
 
 export const comments = queryField("comments", {
-  type: list("Comment"),
+  type: nonNull(list("Comment")),
   args: {
     postId: nonNull(intArg())
   },

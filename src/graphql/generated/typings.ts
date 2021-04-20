@@ -106,7 +106,7 @@ export interface NexusGenFieldTypes {
     node: NexusGenRootTypes['Post']; // Post!
   }
   Query: { // field return type
-    comments: Array<NexusGenRootTypes['Comment'] | null> | null; // [Comment]
+    comments: Array<NexusGenRootTypes['Comment'] | null>; // [Comment]!
     postConnection: NexusGenRootTypes['QueryPostConnection_Connection']; // QueryPostConnection_Connection!
     posts: Array<NexusGenRootTypes['Post'] | null> | null; // [Post]
   }
