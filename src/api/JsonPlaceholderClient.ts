@@ -53,7 +53,6 @@ export class JsonPlaceholderClient {
         userId: Math.ceil(id / 10),
       };
     });
-    console.log(posts)
     return { posts, totalCount: 100 };
   }
 
