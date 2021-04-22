@@ -15,7 +15,7 @@ export const postConnection = queryField((t) => {
     },
     resolve: async (_root, args, context) => {
       const { jsonPlaceholderClient } = context;
-      const { posts, totalCount } = await jsonPlaceholderClient.fetchPosts({
+      const { posts, totalCount } = jsonPlaceholderClient.makeDummyPosts({
         start: args.after,
         limit: args.first,
       });

@@ -7,7 +7,7 @@ export const comments = queryField("comments", {
   },
   resolve: async (_root, args, context) => {
     const { jsonPlaceholderClient } = context;
-    const { comments } = await jsonPlaceholderClient.fetchComments(args.postId);
+    const { comments } = jsonPlaceholderClient.makeDummyComments(args.postId);
     return comments;
   },
 });
