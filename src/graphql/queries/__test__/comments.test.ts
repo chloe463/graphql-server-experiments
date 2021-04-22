@@ -19,7 +19,7 @@ const GET_COMMENTS_QUERY = gql`
 
 describe("[Query] comments", () => {
   it ("returns comments", async () => {
-    (jsonPlaceholderClientMock as any).fetchPosts = jest.fn().mockReturnValue({
+    (jsonPlaceholderClientMock as any).makeDummyComments = jest.fn().mockReturnValue({
       comments: [
         {
           id: 1,

@@ -30,7 +30,7 @@ const GET_POST_CONNECTION = gql`
 
 describe("[Query] postConnection", () => {
   it("returns post list", async () => {
-    (jsonPlaceholderClientMock as any).fetchPosts = jest.fn().mockReturnValue({
+    (jsonPlaceholderClientMock as any).makeDummyPosts = jest.fn().mockReturnValue({
       posts: [
         {
           userId: 1,
