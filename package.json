@@ -14,6 +14,7 @@
     "dataloader": "^2.0.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "faker": "^5.5.3",
     "graphql": "^15.5.0",
     "lodash": "^4.17.15",
     "nexus": "^1.0.0"
@@ -24,6 +25,7 @@
     "@babel/node": "^7.13.13",
     "@babel/preset-env": "^7.13.12",
     "@babel/preset-typescript": "^7.13.0",
+    "@types/faker": "^5.5.3",
     "@types/jest": "^26.0.22",
     "@types/lodash": "^4.14.149",
     "apollo-server-testing": "^2.22.2",
