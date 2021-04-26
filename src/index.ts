@@ -1,5 +1,6 @@
 import { ApolloServer } from "apollo-server-express";
 import express from "express";
+import morgan from "morgan";
 import { createContext } from "./context";
 import { schema } from "./graphql/schema";
 
@@ -12,6 +13,7 @@ const apolloServer = new ApolloServer({
 });
 
 const app = express();
+app.use(morgan("combined"));
 apolloServer.applyMiddleware({ app });
 
 app.get("/ping", function (_, res) {
