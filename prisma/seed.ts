@@ -3,7 +3,7 @@ import faker from "faker";
 const prisma = new PrismaClient();
 
 async function main() {
-  const posts = Array.from({ length: 100 }, (_, i) => i).map((i: number) => {
+  const posts = Array.from({ length: 100 }, (_, i) => i + 1).map((i: number) => {
     return {
       title: faker.lorem.word(10),
       body: faker.lorem.words(100),
