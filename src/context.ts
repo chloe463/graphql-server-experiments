@@ -8,8 +8,17 @@ export type Context = {
 };
 
 export const createContext: ApolloServerExpressConfig["context"] = () => {
+  const prismaClient = new PrismaClient({
+    log: [
+      {
+          level: 'query',
+          emit: 'event',
+      },
+    ]
+  });
+  prismaClient.$on("query", console.log);
   return {
     jsonPlaceholderClient: new JsonPlaceholderClient(),
-    prismaClient: new PrismaClient(),
+    prismaClient,
   };
 };
