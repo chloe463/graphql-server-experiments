@@ -10,13 +10,8 @@ export const Question = objectType({
     t.nonNull.list.field("options", {
       type: Option,
       resolve: async (root, args, context) => {
-        const { prismaClient } = context;
-        const option = await prismaClient.option.findMany({
-          where: {
-            questionId: root.id,
-          },
-        });
-        return option;
+        const { optionsLoader } = context;
+        return await optionsLoader.load(root.id);
       }
     });
   },
