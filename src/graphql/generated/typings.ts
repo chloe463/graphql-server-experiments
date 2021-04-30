@@ -82,6 +82,10 @@ export interface NexusGenObjects {
     edges: NexusGenRootTypes['PostEdge'][]; // [PostEdge!]!
     pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
   }
+  QueryQuestionnaireConnection_Connection: { // root type
+    edges: NexusGenRootTypes['QuestionnaireEdge'][]; // [QuestionnaireEdge!]!
+    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
+  }
   Question: { // root type
     id: number; // Int!
     text: string; // String!
@@ -95,6 +99,10 @@ export interface NexusGenObjects {
     startAt: NexusGenScalars['DateTime']; // DateTime!
     state: number; // Int!
     title: string; // String!
+  }
+  QuestionnaireEdge: { // root type
+    cursor: string; // String!
+    node: NexusGenRootTypes['Questionnaire']; // Questionnaire!
   }
 }
 
@@ -140,10 +148,16 @@ export interface NexusGenFieldTypes {
     comments: Array<NexusGenRootTypes['Comment'] | null>; // [Comment]!
     postConnection: NexusGenRootTypes['QueryPostConnection_Connection']; // QueryPostConnection_Connection!
     posts: Array<NexusGenRootTypes['Post'] | null> | null; // [Post]
+    questionnaireConnection: NexusGenRootTypes['QueryQuestionnaireConnection_Connection']; // QueryQuestionnaireConnection_Connection!
     questionnaires: Array<NexusGenRootTypes['Questionnaire'] | null> | null; // [Questionnaire]
   }
   QueryPostConnection_Connection: { // field return type
     edges: NexusGenRootTypes['PostEdge'][]; // [PostEdge!]!
+    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
+    totalCount: number; // Int!
+  }
+  QueryQuestionnaireConnection_Connection: { // field return type
+    edges: NexusGenRootTypes['QuestionnaireEdge'][]; // [QuestionnaireEdge!]!
     pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
     totalCount: number; // Int!
   }
@@ -161,6 +175,10 @@ export interface NexusGenFieldTypes {
     startAt: NexusGenScalars['DateTime']; // DateTime!
     state: number; // Int!
     title: string; // String!
+  }
+  QuestionnaireEdge: { // field return type
+    cursor: string; // String!
+    node: NexusGenRootTypes['Questionnaire']; // Questionnaire!
   }
 }
 
@@ -196,10 +214,16 @@ export interface NexusGenFieldTypeNames {
     comments: 'Comment'
     postConnection: 'QueryPostConnection_Connection'
     posts: 'Post'
+    questionnaireConnection: 'QueryQuestionnaireConnection_Connection'
     questionnaires: 'Questionnaire'
   }
   QueryPostConnection_Connection: { // field return type name
     edges: 'PostEdge'
+    pageInfo: 'PageInfo'
+    totalCount: 'Int'
+  }
+  QueryQuestionnaireConnection_Connection: { // field return type name
+    edges: 'QuestionnaireEdge'
     pageInfo: 'PageInfo'
     totalCount: 'Int'
   }
@@ -218,6 +242,10 @@ export interface NexusGenFieldTypeNames {
     state: 'Int'
     title: 'String'
   }
+  QuestionnaireEdge: { // field return type name
+    cursor: 'String'
+    node: 'Questionnaire'
+  }
 }
 
 export interface NexusGenArgTypes {
@@ -235,6 +263,12 @@ export interface NexusGenArgTypes {
     posts: { // args
       limit: number | null; // Int
       start: string | null; // String
+    }
+    questionnaireConnection: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
     }
   }
 }
