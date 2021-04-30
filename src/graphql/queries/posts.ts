@@ -7,8 +7,8 @@ export const posts = queryField("posts", {
     limit: intArg({ default: 10 }),
   },
   resolve: async (_root, args, context) => {
-    const { jsonPlaceholderClient } = context;
-    const { posts } = await jsonPlaceholderClient.fetchPosts(args);
+    const { prismaClient } = context;
+    const posts = await prismaClient.post.findMany();
     return posts;
   },
 });

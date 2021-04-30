@@ -6,9 +6,16 @@
 
 import { Context } from "./../../context"
 import { core, connectionPluginCore } from "nexus"
-
+declare global {
+  interface NexusGenCustomInputMethods<TypeName extends string> {
+    datetime<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "DateTime";
+    date<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "Date";
+  }
+}
 declare global {
   interface NexusGenCustomOutputMethods<TypeName extends string> {
+    datetime<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "DateTime";
+    date<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "Date";
     /**
      * Adds a Relay-style connection to the type, with numerous options for configuration
      *
@@ -38,6 +45,8 @@ export interface NexusGenScalars {
   Float: number
   Boolean: boolean
   ID: string
+  Date: any
+  DateTime: any
 }
 
 export interface NexusGenObjects {
@@ -47,6 +56,10 @@ export interface NexusGenObjects {
     id: number; // Int!
     name: string; // String!
     postId: number; // Int!
+  }
+  Option: { // root type
+    id: number; // Int!
+    text: string; // String!
   }
   PageInfo: { // root type
     endCursor?: string | null; // String
@@ -69,6 +82,20 @@ export interface NexusGenObjects {
     edges: NexusGenRootTypes['PostEdge'][]; // [PostEdge!]!
     pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
   }
+  Question: { // root type
+    id: number; // Int!
+    text: string; // String!
+    type: number; // Int!
+  }
+  Questionnaire: { // root type
+    description: string; // String!
+    endAt: NexusGenScalars['DateTime']; // DateTime!
+    id: number; // Int!
+    questions: Array<NexusGenRootTypes['Question'] | null>; // [Question]!
+    startAt: NexusGenScalars['DateTime']; // DateTime!
+    state: number; // Int!
+    title: string; // String!
+  }
 }
 
 export interface NexusGenInterfaces {
@@ -88,6 +115,10 @@ export interface NexusGenFieldTypes {
     id: number; // Int!
     name: string; // String!
     postId: number; // Int!
+  }
+  Option: { // field return type
+    id: number; // Int!
+    text: string; // String!
   }
   PageInfo: { // field return type
     endCursor: string | null; // String
@@ -109,11 +140,27 @@ export interface NexusGenFieldTypes {
     comments: Array<NexusGenRootTypes['Comment'] | null>; // [Comment]!
     postConnection: NexusGenRootTypes['QueryPostConnection_Connection']; // QueryPostConnection_Connection!
     posts: Array<NexusGenRootTypes['Post'] | null> | null; // [Post]
+    questionnaires: Array<NexusGenRootTypes['Questionnaire'] | null> | null; // [Questionnaire]
   }
   QueryPostConnection_Connection: { // field return type
     edges: NexusGenRootTypes['PostEdge'][]; // [PostEdge!]!
     pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
     totalCount: number; // Int!
+  }
+  Question: { // field return type
+    id: number; // Int!
+    options: Array<NexusGenRootTypes['Option'] | null>; // [Option]!
+    text: string; // String!
+    type: number; // Int!
+  }
+  Questionnaire: { // field return type
+    description: string; // String!
+    endAt: NexusGenScalars['DateTime']; // DateTime!
+    id: number; // Int!
+    questions: Array<NexusGenRootTypes['Question'] | null>; // [Question]!
+    startAt: NexusGenScalars['DateTime']; // DateTime!
+    state: number; // Int!
+    title: string; // String!
   }
 }
 
@@ -124,6 +171,10 @@ export interface NexusGenFieldTypeNames {
     id: 'Int'
     name: 'String'
     postId: 'Int'
+  }
+  Option: { // field return type name
+    id: 'Int'
+    text: 'String'
   }
   PageInfo: { // field return type name
     endCursor: 'String'
@@ -145,11 +196,27 @@ export interface NexusGenFieldTypeNames {
     comments: 'Comment'
     postConnection: 'QueryPostConnection_Connection'
     posts: 'Post'
+    questionnaires: 'Questionnaire'
   }
   QueryPostConnection_Connection: { // field return type name
     edges: 'PostEdge'
     pageInfo: 'PageInfo'
     totalCount: 'Int'
+  }
+  Question: { // field return type name
+    id: 'Int'
+    options: 'Option'
+    text: 'String'
+    type: 'Int'
+  }
+  Questionnaire: { // field return type name
+    description: 'String'
+    endAt: 'DateTime'
+    id: 'Int'
+    questions: 'Question'
+    startAt: 'DateTime'
+    state: 'Int'
+    title: 'String'
   }
 }
 

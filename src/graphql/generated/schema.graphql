@@ -10,6 +10,15 @@ type Comment {
   postId: Int!
 }
 
+scalar Date
+
+scalar DateTime
+
+type Option {
+  id: Int!
+  text: String!
+}
+
 """
 PageInfo cursor, as defined in https://facebook.github.io/relay/graphql/connections.htm#sec-undefined.PageInfo
 """
@@ -69,6 +78,7 @@ type Query {
     query: String
   ): QueryPostConnection_Connection!
   posts(limit: Int = 10, start: String = "0"): [Post]
+  questionnaires: [Questionnaire]
 }
 
 type QueryPostConnection_Connection {
@@ -82,4 +92,21 @@ type QueryPostConnection_Connection {
   """
   pageInfo: PageInfo!
   totalCount: Int!
+}
+
+type Question {
+  id: Int!
+  options: [Option]!
+  text: String!
+  type: Int!
+}
+
+type Questionnaire {
+  description: String!
+  endAt: DateTime!
+  id: Int!
+  questions: [Question]!
+  startAt: DateTime!
+  state: Int!
+  title: String!
 }
