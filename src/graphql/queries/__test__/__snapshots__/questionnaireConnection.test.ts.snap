@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[Query] questionnaireConnection returns questionnaire list 1`] = `
+Object {
+  "data": Object {
+    "questionnaireConnection": Object {
+      "edges": Array [
+        Object {
+          "cursor": "1",
+          "node": Object {
+            "description": "ab accusantium ipsam voluptatibus vero voluptatum beatae et sed eum harum eveniet et fugiat deleniti laborum dolor ea perferendis ea eligendi molestias possimus molestiae quae et aspernatur et aut omnis",
+            "endAt": "2021-06-29T15:00:00.000Z",
+            "id": 1,
+            "startAt": "2021-04-29T16:23:20.874Z",
+            "state": 1,
+            "title": "Questionnaire.1",
+          },
+        },
+        Object {
+          "cursor": "2",
+          "node": Object {
+            "description": "voluptatibus magni et nesciunt quo commodi beatae ea error qui fugit minus nostrum dolores eaque quidem beatae error necessitatibus consequatur quibusdam sunt molestiae aut nulla dolor ad alias neque corrupti",
+            "endAt": "2021-06-29T15:00:00.000Z",
+            "id": 2,
+            "startAt": "2021-04-29T16:23:20.874Z",
+            "state": 2,
+            "title": "Questionnaire.2",
+          },
+        },
+        Object {
+          "cursor": "3",
+          "node": Object {
+            "description": "optio maiores similique dolorem aut voluptatem autem voluptatem ipsum exercitationem nihil voluptatem nemo illo quis in ut rerum et ad esse ipsa quae esse voluptas perspiciatis aspernatur possimus ut dolorem",
+            "endAt": "2021-06-29T15:00:00.000Z",
+            "id": 3,
+            "startAt": "2021-04-29T16:23:20.874Z",
+            "state": 3,
+            "title": "Questionnaire.3",
+          },
+        },
+      ],
+      "pageInfo": Object {
+        "endCursor": "3",
+        "hasNextPage": false,
+        "hasPreviousPage": false,
+        "startCursor": "1",
+      },
+      "totalCount": 3,
+    },
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;

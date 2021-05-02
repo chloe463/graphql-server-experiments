@@ -4,7 +4,7 @@ import { Context } from "./context";
 import { schema } from "./graphql/schema";
 
 type DummyContext = {
-  [key in keyof Context]: jest.Mock;
+  [key in keyof Partial<Context>]: jest.Mock;
 };
 
 export const constructTestServer = (context: DummyContext) => {
