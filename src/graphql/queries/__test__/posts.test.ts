@@ -1,9 +1,9 @@
+import { PrismaClient } from "@prisma/client";
 import { gql } from "apollo-server";
 import { createTestClient } from "apollo-server-testing";
-import { JsonPlaceholderClient } from "../../../api/JsonPlaceholderClient";
 import { constructTestServer } from "../../../testUtils";
 
-const jsonPlaceholderClientMock = (JsonPlaceholderClient as any) as jest.Mock<JsonPlaceholderClient>;
+const prismaClientMock = (PrismaClient as any) as jest.Mock<PrismaClient>;
 
 const GET_POST_QUERY = gql`
   query GetPostsQuery($start: String, $limit: Int) {
@@ -18,8 +18,8 @@ const GET_POST_QUERY = gql`
 
 describe("[Query] posts", () => {
   it ("return posts", async () => {
-    (jsonPlaceholderClientMock as any).fetchPosts = jest.fn().mockReturnValue({
-      posts: [
+    (prismaClientMock as any).post = {
+      findMany: jest.fn().mockReturnValue([
         {
           userId: 1,
           id: 1,
@@ -38,11 +38,10 @@ describe("[Query] posts", () => {
           title: "ea molestias quasi exercitationem repellat qui ipsa sit aut",
           body: "et iusto sed quo iure voluptatem occaecati omnis eligendi aut ad voluptatem doloribus vel accusantium quis pariatur molestiae porro eius odio et labore et velit aut"
         },
-      ],
-      totalCount: 3,
-    });
+      ]),
+    };
     const server = constructTestServer({
-      jsonPlaceholderClient: jsonPlaceholderClientMock,
+      prismaClient: prismaClientMock,
     });
 
     const { query } = createTestClient(server);
