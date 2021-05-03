@@ -51,6 +51,9 @@ export interface NexusGenInputs {
     state: number; // Int!
     title: string; // String!
   }
+  DeleteQuestionnaireInput: { // input type
+    id: number; // Int!
+  }
   UpdateOptionInput: { // input type
     id?: number | null; // Int
     text?: string | null; // String
@@ -96,6 +99,9 @@ export interface NexusGenObjects {
   }
   CreateQuestionnairePayload: { // root type
     questionnaire?: NexusGenRootTypes['Questionnaire'] | null; // Questionnaire
+  }
+  DeleteQuestionnairePayload: { // root type
+    result?: boolean | null; // Boolean
   }
   Mutation: {};
   Option: { // root type
@@ -171,9 +177,13 @@ export interface NexusGenFieldTypes {
   CreateQuestionnairePayload: { // field return type
     questionnaire: NexusGenRootTypes['Questionnaire'] | null; // Questionnaire
   }
+  DeleteQuestionnairePayload: { // field return type
+    result: boolean | null; // Boolean
+  }
   Mutation: { // field return type
     UpdateQuestionnaire: NexusGenRootTypes['UpdateQuestionnairePayload'] | null; // UpdateQuestionnairePayload
     createQuestionnaire: NexusGenRootTypes['CreateQuestionnairePayload'] | null; // CreateQuestionnairePayload
+    deleteQuestionnaire: NexusGenRootTypes['DeleteQuestionnairePayload'] | null; // DeleteQuestionnairePayload
   }
   Option: { // field return type
     id: number; // Int!
@@ -247,9 +257,13 @@ export interface NexusGenFieldTypeNames {
   CreateQuestionnairePayload: { // field return type name
     questionnaire: 'Questionnaire'
   }
+  DeleteQuestionnairePayload: { // field return type name
+    result: 'Boolean'
+  }
   Mutation: { // field return type name
     UpdateQuestionnaire: 'UpdateQuestionnairePayload'
     createQuestionnaire: 'CreateQuestionnairePayload'
+    deleteQuestionnaire: 'DeleteQuestionnairePayload'
   }
   Option: { // field return type name
     id: 'Int'
@@ -319,6 +333,9 @@ export interface NexusGenArgTypes {
     }
     createQuestionnaire: { // args
       questionnaire?: NexusGenInputs['CreateQuestionnaireInput'] | null; // CreateQuestionnaireInput
+    }
+    deleteQuestionnaire: { // args
+      id: number; // Int!
     }
   }
   Query: {

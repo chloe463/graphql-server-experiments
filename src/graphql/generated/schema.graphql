@@ -38,9 +38,18 @@ scalar Date
 
 scalar DateTime
 
+input DeleteQuestionnaireInput {
+  id: Int!
+}
+
+type DeleteQuestionnairePayload {
+  result: Boolean
+}
+
 type Mutation {
   UpdateQuestionnaire(questionnaire: UpdateQuestionnaireInput!): UpdateQuestionnairePayload
   createQuestionnaire(questionnaire: CreateQuestionnaireInput): CreateQuestionnairePayload
+  deleteQuestionnaire(id: Int!): DeleteQuestionnairePayload
 }
 
 type Option {
