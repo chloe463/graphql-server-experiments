@@ -14,21 +14,8 @@ input CreateOptionInput {
   text: String!
 }
 
-type CreateOptionPayload {
-  id: Int!
-  text: String!
-}
-
 input CreateQuestionInput {
   options: [CreateOptionInput]!
-  required: Boolean!
-  text: String!
-  type: Int!
-}
-
-type CreateQuestionPayload {
-  id: Int!
-  options: [CreateOptionPayload]!
   required: Boolean!
   text: String!
   type: Int!
@@ -44,13 +31,7 @@ input CreateQuestionnaireInput {
 }
 
 type CreateQuestionnairePayload {
-  description: String!
-  endAt: DateTime!
-  id: Int!
-  questions: [CreateQuestionPayload]!
-  startAt: DateTime!
-  state: Int!
-  title: String!
+  questionnaire: Questionnaire
 }
 
 scalar Date

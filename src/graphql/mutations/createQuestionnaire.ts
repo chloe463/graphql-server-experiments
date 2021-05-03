@@ -53,7 +53,7 @@ export const createQuestionnaire = mutationField("createQuestionnaire", {
     });
 
     return {
-      ...res,
+      questionnaire: res,
     };
   },
 });

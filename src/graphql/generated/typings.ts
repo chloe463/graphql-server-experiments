@@ -74,25 +74,8 @@ export interface NexusGenObjects {
     name: string; // String!
     postId: number; // Int!
   }
-  CreateOptionPayload: { // root type
-    id: number; // Int!
-    text: string; // String!
-  }
-  CreateQuestionPayload: { // root type
-    id: number; // Int!
-    options: Array<NexusGenRootTypes['CreateOptionPayload'] | null>; // [CreateOptionPayload]!
-    required: boolean; // Boolean!
-    text: string; // String!
-    type: number; // Int!
-  }
   CreateQuestionnairePayload: { // root type
-    description: string; // String!
-    endAt: NexusGenScalars['DateTime']; // DateTime!
-    id: number; // Int!
-    questions: Array<NexusGenRootTypes['CreateQuestionPayload'] | null>; // [CreateQuestionPayload]!
-    startAt: NexusGenScalars['DateTime']; // DateTime!
-    state: number; // Int!
-    title: string; // String!
+    questionnaire?: NexusGenRootTypes['Questionnaire'] | null; // Questionnaire
   }
   Mutation: {};
   Option: { // root type
@@ -162,25 +145,8 @@ export interface NexusGenFieldTypes {
     name: string; // String!
     postId: number; // Int!
   }
-  CreateOptionPayload: { // field return type
-    id: number; // Int!
-    text: string; // String!
-  }
-  CreateQuestionPayload: { // field return type
-    id: number; // Int!
-    options: Array<NexusGenRootTypes['CreateOptionPayload'] | null>; // [CreateOptionPayload]!
-    required: boolean; // Boolean!
-    text: string; // String!
-    type: number; // Int!
-  }
   CreateQuestionnairePayload: { // field return type
-    description: string; // String!
-    endAt: NexusGenScalars['DateTime']; // DateTime!
-    id: number; // Int!
-    questions: Array<NexusGenRootTypes['CreateQuestionPayload'] | null>; // [CreateQuestionPayload]!
-    startAt: NexusGenScalars['DateTime']; // DateTime!
-    state: number; // Int!
-    title: string; // String!
+    questionnaire: NexusGenRootTypes['Questionnaire'] | null; // Questionnaire
   }
   Mutation: { // field return type
     createQuestionnaire: NexusGenRootTypes['CreateQuestionnairePayload'] | null; // CreateQuestionnairePayload
@@ -251,25 +217,8 @@ export interface NexusGenFieldTypeNames {
     name: 'String'
     postId: 'Int'
   }
-  CreateOptionPayload: { // field return type name
-    id: 'Int'
-    text: 'String'
-  }
-  CreateQuestionPayload: { // field return type name
-    id: 'Int'
-    options: 'CreateOptionPayload'
-    required: 'Boolean'
-    text: 'String'
-    type: 'Int'
-  }
   CreateQuestionnairePayload: { // field return type name
-    description: 'String'
-    endAt: 'DateTime'
-    id: 'Int'
-    questions: 'CreateQuestionPayload'
-    startAt: 'DateTime'
-    state: 'Int'
-    title: 'String'
+    questionnaire: 'Questionnaire'
   }
   Mutation: { // field return type name
     createQuestionnaire: 'CreateQuestionnairePayload'
