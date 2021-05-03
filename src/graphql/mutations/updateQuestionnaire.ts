@@ -1,12 +1,56 @@
 import { Prisma } from "@prisma/client";
 import { arg, mutationField, nonNull } from "nexus";
+import { NexusGenInputs } from "../generated/typings";
 import { updateQuestionnaireInput } from "../inputs";
 import { updateQuestionnairePayload } from "../types";
 
-type UpdateParam = Prisma.QuestionnaireUpdateArgs["data"];
-type UpdateQuestionsParams = UpdateParam["questions"];
-type QuestionUpdateWithWhereUniqueWithoutQuestionnaireInput = Prisma.QuestionUpdateWithWhereUniqueWithoutQuestionnaireInput;
-type QuestionCreateWithoutQuestionnaireInput = Prisma.QuestionCreateWithoutQuestionnaireInput;
+type UpdateQuestionnaireParam = Prisma.QuestionnaireUpdateArgs["data"];
+type CreateQuestionInput = Required<Omit<NexusGenInputs["UpdateQuestionInput"], "id">>;
+type CreateOptionInput = Required<Omit<NexusGenInputs["UpdateOptionInput"], "id">>;
+
+const validateCreateQuestion = (question: NexusGenInputs["UpdateQuestionInput"]): question is CreateQuestionInput => {
+  if (!question.id) {
+    return Boolean(question.type && question.text && question.required);
+  }
+  return false;
+};
+
+const validateCreateOption = (option: NexusGenInputs["UpdateOptionInput"]): option is CreateOptionInput => {
+  if (!option.id) {
+    return Boolean(option.text);
+  }
+  return false;
+};
+
+const buildUpdateParams = (questionnaire: NexusGenInputs["UpdateQuestionnaireInput"]): UpdateQuestionnaireParam => {
+  return {
+    ...questionnaire,
+    questions: {
+      update: questionnaire.questions.filter((q) => q.id).map((q) => {
+        return {
+          where: { id: q.id },
+          data: {
+            ...q,
+            options: {
+              update: q.options.filter((o) => o.id).map((o) => {
+                return {
+                  where: { id: o.id },
+                  data: o,
+                };
+              }),
+              create: q.options.filter(validateCreateOption).map((o) => {
+                return o;
+              }),
+            }
+          }
+        };
+      }),
+      create: questionnaire.questions.filter(validateCreateQuestion).map((q) => {
+        return q;
+      })
+    }
+  };
+}
 
 export const upateQuestionnaire = mutationField("UpdateQuestionnaire", {
   type: updateQuestionnairePayload,
@@ -18,95 +62,11 @@ export const upateQuestionnaire = mutationField("UpdateQuestionnaire", {
   resolve: async (_root, args, context) => {
     const { prismaClient } = context;
 
-    const current = await prismaClient.questionnaire.findUnique({
-      where: {
-        id: args.questionnaire.id,
-      },
-      select: {
-        id: false,
-        title: true,
-        description: true,
-        state: true,
-        startAt: true,
-        endAt: true,
-        questions: {
-          select: {
-            id: true,
-            text: true,
-            type: true,
-            required: true,
-            options: {
-              select: {
-                id: true,
-                text: true,
-              }
-            }
-          }
-        }
-      }
-    });
-
-
-    const questions: UpdateQuestionsParams = {
-      create: [],
-      update: [],
-    };
-    for (const question of args.questionnaire.questions) {
-      const existingOptions = [];
-      const newOptions = [];
-      for (const option of question.options) {
-        if (option.id != null) {
-          existingOptions.push({
-            where: {
-              id: option.id,
-            },
-            data: {
-              text: option.text,
-            },
-          });
-          continue;
-        }
-        newOptions.push({
-          text: option.text,
-        });
-      }
-      if (question.id != null) {
-        (questions.update as Array<QuestionUpdateWithWhereUniqueWithoutQuestionnaireInput>).push({
-          where: { id: question.id },
-          data: {
-            ...question,
-            options: {
-              update: existingOptions,
-              create: newOptions,
-            }
-          },
-        });
-        continue;
-      }
-      // TODO: Fix type error
-      // @ts-ignore
-      (questions.create).push({
-        ...question,
-        options: {
-          create: newOptions,
-        }
-      });
-    }
-
-    const questionnaire: UpdateParam = {
-      title: args.questionnaire.title || current.title,
-      description: args.questionnaire.description || current.description,
-      state: args.questionnaire.state || current.state,
-      startAt: args.questionnaire.startAt || current.startAt,
-      endAt: args.questionnaire.endAt || current.endAt,
-      questions,
-    };
-
     const res = await prismaClient.questionnaire.update({
       where: {
         id: args.questionnaire.id,
       },
-      data: questionnaire,
+      data: buildUpdateParams(args.questionnaire),
       select: {
         id: true,
         title: true,
