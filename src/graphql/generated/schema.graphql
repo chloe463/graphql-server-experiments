@@ -10,9 +10,56 @@ type Comment {
   postId: Int!
 }
 
+input CreateOptionInput {
+  text: String!
+}
+
+type CreateOptionPayload {
+  id: Int!
+  text: String!
+}
+
+input CreateQuestionInput {
+  options: [CreateOptionInput]!
+  required: Boolean!
+  text: String!
+  type: Int!
+}
+
+type CreateQuestionPayload {
+  id: Int!
+  options: [CreateOptionPayload]!
+  required: Boolean!
+  text: String!
+  type: Int!
+}
+
+input CreateQuestionnaireInput {
+  description: String!
+  endAt: DateTime!
+  questions: [CreateQuestionInput]!
+  startAt: DateTime!
+  state: Int!
+  title: String!
+}
+
+type CreateQuestionnairePayload {
+  description: String!
+  endAt: DateTime!
+  id: Int!
+  questions: [CreateQuestionPayload]!
+  startAt: DateTime!
+  state: Int!
+  title: String!
+}
+
 scalar Date
 
 scalar DateTime
+
+type Mutation {
+  createQuestionnaire(questionnaire: CreateQuestionnaireInput): CreateQuestionnairePayload
+}
 
 type Option {
   id: Int!

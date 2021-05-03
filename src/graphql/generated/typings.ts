@@ -34,6 +34,23 @@ declare global {
 }
 
 export interface NexusGenInputs {
+  CreateOptionInput: { // input type
+    text: string; // String!
+  }
+  CreateQuestionInput: { // input type
+    options: Array<NexusGenInputs['CreateOptionInput'] | null>; // [CreateOptionInput]!
+    required: boolean; // Boolean!
+    text: string; // String!
+    type: number; // Int!
+  }
+  CreateQuestionnaireInput: { // input type
+    description: string; // String!
+    endAt: NexusGenScalars['DateTime']; // DateTime!
+    questions: Array<NexusGenInputs['CreateQuestionInput'] | null>; // [CreateQuestionInput]!
+    startAt: NexusGenScalars['DateTime']; // DateTime!
+    state: number; // Int!
+    title: string; // String!
+  }
 }
 
 export interface NexusGenEnums {
@@ -57,6 +74,27 @@ export interface NexusGenObjects {
     name: string; // String!
     postId: number; // Int!
   }
+  CreateOptionPayload: { // root type
+    id: number; // Int!
+    text: string; // String!
+  }
+  CreateQuestionPayload: { // root type
+    id: number; // Int!
+    options: Array<NexusGenRootTypes['CreateOptionPayload'] | null>; // [CreateOptionPayload]!
+    required: boolean; // Boolean!
+    text: string; // String!
+    type: number; // Int!
+  }
+  CreateQuestionnairePayload: { // root type
+    description: string; // String!
+    endAt: NexusGenScalars['DateTime']; // DateTime!
+    id: number; // Int!
+    questions: Array<NexusGenRootTypes['CreateQuestionPayload'] | null>; // [CreateQuestionPayload]!
+    startAt: NexusGenScalars['DateTime']; // DateTime!
+    state: number; // Int!
+    title: string; // String!
+  }
+  Mutation: {};
   Option: { // root type
     id: number; // Int!
     text: string; // String!
@@ -124,6 +162,29 @@ export interface NexusGenFieldTypes {
     name: string; // String!
     postId: number; // Int!
   }
+  CreateOptionPayload: { // field return type
+    id: number; // Int!
+    text: string; // String!
+  }
+  CreateQuestionPayload: { // field return type
+    id: number; // Int!
+    options: Array<NexusGenRootTypes['CreateOptionPayload'] | null>; // [CreateOptionPayload]!
+    required: boolean; // Boolean!
+    text: string; // String!
+    type: number; // Int!
+  }
+  CreateQuestionnairePayload: { // field return type
+    description: string; // String!
+    endAt: NexusGenScalars['DateTime']; // DateTime!
+    id: number; // Int!
+    questions: Array<NexusGenRootTypes['CreateQuestionPayload'] | null>; // [CreateQuestionPayload]!
+    startAt: NexusGenScalars['DateTime']; // DateTime!
+    state: number; // Int!
+    title: string; // String!
+  }
+  Mutation: { // field return type
+    createQuestionnaire: NexusGenRootTypes['CreateQuestionnairePayload'] | null; // CreateQuestionnairePayload
+  }
   Option: { // field return type
     id: number; // Int!
     text: string; // String!
@@ -190,6 +251,29 @@ export interface NexusGenFieldTypeNames {
     name: 'String'
     postId: 'Int'
   }
+  CreateOptionPayload: { // field return type name
+    id: 'Int'
+    text: 'String'
+  }
+  CreateQuestionPayload: { // field return type name
+    id: 'Int'
+    options: 'CreateOptionPayload'
+    required: 'Boolean'
+    text: 'String'
+    type: 'Int'
+  }
+  CreateQuestionnairePayload: { // field return type name
+    description: 'String'
+    endAt: 'DateTime'
+    id: 'Int'
+    questions: 'CreateQuestionPayload'
+    startAt: 'DateTime'
+    state: 'Int'
+    title: 'String'
+  }
+  Mutation: { // field return type name
+    createQuestionnaire: 'CreateQuestionnairePayload'
+  }
   Option: { // field return type name
     id: 'Int'
     text: 'String'
@@ -249,6 +333,11 @@ export interface NexusGenFieldTypeNames {
 }
 
 export interface NexusGenArgTypes {
+  Mutation: {
+    createQuestionnaire: { // args
+      questionnaire?: NexusGenInputs['CreateQuestionnaireInput'] | null; // CreateQuestionnaireInput
+    }
+  }
   Query: {
     comments: { // args
       postId: number; // Int!
@@ -281,7 +370,7 @@ export interface NexusGenTypeInterfaces {
 
 export type NexusGenObjectNames = keyof NexusGenObjects;
 
-export type NexusGenInputNames = never;
+export type NexusGenInputNames = keyof NexusGenInputs;
 
 export type NexusGenEnumNames = never;
 
