@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[Mutation] deleteQuestionnaire can soft delete questionnaire 1`] = `
+Object {
+  "data": Object {
+    "deleteQuestionnaire": Object {
+      "result": true,
+    },
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
