@@ -51,6 +51,26 @@ export interface NexusGenInputs {
     state: number; // Int!
     title: string; // String!
   }
+  UpdateOptionInput: { // input type
+    id?: number | null; // Int
+    text?: string | null; // String
+  }
+  UpdateQuestionInput: { // input type
+    id?: number | null; // Int
+    options?: Array<NexusGenInputs['UpdateOptionInput'] | null> | null; // [UpdateOptionInput]
+    required?: boolean | null; // Boolean
+    text?: string | null; // String
+    type?: number | null; // Int
+  }
+  UpdateQuestionnaireInput: { // input type
+    description?: string | null; // String
+    endAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    id: number; // Int!
+    questions?: Array<NexusGenInputs['UpdateQuestionInput'] | null> | null; // [UpdateQuestionInput]
+    startAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    state?: number | null; // Int
+    title?: string | null; // String
+  }
 }
 
 export interface NexusGenEnums {
@@ -125,6 +145,9 @@ export interface NexusGenObjects {
     cursor: string; // String!
     node: NexusGenRootTypes['Questionnaire']; // Questionnaire!
   }
+  UpdateQuestionnairePayload: { // root type
+    questionnaire?: NexusGenRootTypes['Questionnaire'] | null; // Questionnaire
+  }
 }
 
 export interface NexusGenInterfaces {
@@ -149,6 +172,7 @@ export interface NexusGenFieldTypes {
     questionnaire: NexusGenRootTypes['Questionnaire'] | null; // Questionnaire
   }
   Mutation: { // field return type
+    UpdateQuestionnaire: NexusGenRootTypes['UpdateQuestionnairePayload'] | null; // UpdateQuestionnairePayload
     createQuestionnaire: NexusGenRootTypes['CreateQuestionnairePayload'] | null; // CreateQuestionnairePayload
   }
   Option: { // field return type
@@ -207,6 +231,9 @@ export interface NexusGenFieldTypes {
     cursor: string; // String!
     node: NexusGenRootTypes['Questionnaire']; // Questionnaire!
   }
+  UpdateQuestionnairePayload: { // field return type
+    questionnaire: NexusGenRootTypes['Questionnaire'] | null; // Questionnaire
+  }
 }
 
 export interface NexusGenFieldTypeNames {
@@ -221,6 +248,7 @@ export interface NexusGenFieldTypeNames {
     questionnaire: 'Questionnaire'
   }
   Mutation: { // field return type name
+    UpdateQuestionnaire: 'UpdateQuestionnairePayload'
     createQuestionnaire: 'CreateQuestionnairePayload'
   }
   Option: { // field return type name
@@ -279,10 +307,16 @@ export interface NexusGenFieldTypeNames {
     cursor: 'String'
     node: 'Questionnaire'
   }
+  UpdateQuestionnairePayload: { // field return type name
+    questionnaire: 'Questionnaire'
+  }
 }
 
 export interface NexusGenArgTypes {
   Mutation: {
+    UpdateQuestionnaire: { // args
+      questionnaire: NexusGenInputs['UpdateQuestionnaireInput']; // UpdateQuestionnaireInput!
+    }
     createQuestionnaire: { // args
       questionnaire?: NexusGenInputs['CreateQuestionnaireInput'] | null; // CreateQuestionnaireInput
     }

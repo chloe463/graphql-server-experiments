@@ -39,6 +39,7 @@ scalar Date
 scalar DateTime
 
 type Mutation {
+  UpdateQuestionnaire(questionnaire: UpdateQuestionnaireInput!): UpdateQuestionnairePayload
   createQuestionnaire(questionnaire: CreateQuestionnaireInput): CreateQuestionnairePayload
 }
 
@@ -171,4 +172,31 @@ type QuestionnaireEdge {
 
   """https://facebook.github.io/relay/graphql/connections.htm#sec-Node"""
   node: Questionnaire!
+}
+
+input UpdateOptionInput {
+  id: Int
+  text: String
+}
+
+input UpdateQuestionInput {
+  id: Int
+  options: [UpdateOptionInput]
+  required: Boolean
+  text: String
+  type: Int
+}
+
+input UpdateQuestionnaireInput {
+  description: String
+  endAt: DateTime
+  id: Int!
+  questions: [UpdateQuestionInput]
+  startAt: DateTime
+  state: Int
+  title: String
+}
+
+type UpdateQuestionnairePayload {
+  questionnaire: Questionnaire
 }
