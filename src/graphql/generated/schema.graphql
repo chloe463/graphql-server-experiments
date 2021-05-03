@@ -47,9 +47,9 @@ type DeleteQuestionnairePayload {
 }
 
 type Mutation {
-  UpdateQuestionnaire(questionnaire: UpdateQuestionnaireInput!): UpdateQuestionnairePayload
   createQuestionnaire(questionnaire: CreateQuestionnaireInput): CreateQuestionnairePayload
   deleteQuestionnaire(id: Int!): DeleteQuestionnairePayload
+  updateQuestionnaire(questionnaire: UpdateQuestionnaireInput!): UpdateQuestionnairePayload
 }
 
 type Option {

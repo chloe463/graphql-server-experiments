@@ -181,9 +181,9 @@ export interface NexusGenFieldTypes {
     result: boolean | null; // Boolean
   }
   Mutation: { // field return type
-    UpdateQuestionnaire: NexusGenRootTypes['UpdateQuestionnairePayload'] | null; // UpdateQuestionnairePayload
     createQuestionnaire: NexusGenRootTypes['CreateQuestionnairePayload'] | null; // CreateQuestionnairePayload
     deleteQuestionnaire: NexusGenRootTypes['DeleteQuestionnairePayload'] | null; // DeleteQuestionnairePayload
+    updateQuestionnaire: NexusGenRootTypes['UpdateQuestionnairePayload'] | null; // UpdateQuestionnairePayload
   }
   Option: { // field return type
     id: number; // Int!
@@ -261,9 +261,9 @@ export interface NexusGenFieldTypeNames {
     result: 'Boolean'
   }
   Mutation: { // field return type name
-    UpdateQuestionnaire: 'UpdateQuestionnairePayload'
     createQuestionnaire: 'CreateQuestionnairePayload'
     deleteQuestionnaire: 'DeleteQuestionnairePayload'
+    updateQuestionnaire: 'UpdateQuestionnairePayload'
   }
   Option: { // field return type name
     id: 'Int'
@@ -328,14 +328,14 @@ export interface NexusGenFieldTypeNames {
 
 export interface NexusGenArgTypes {
   Mutation: {
-    UpdateQuestionnaire: { // args
-      questionnaire: NexusGenInputs['UpdateQuestionnaireInput']; // UpdateQuestionnaireInput!
-    }
     createQuestionnaire: { // args
       questionnaire?: NexusGenInputs['CreateQuestionnaireInput'] | null; // CreateQuestionnaireInput
     }
     deleteQuestionnaire: { // args
       id: number; // Int!
+    }
+    updateQuestionnaire: { // args
+      questionnaire: NexusGenInputs['UpdateQuestionnaireInput']; // UpdateQuestionnaireInput!
     }
   }
   Query: {

@@ -52,7 +52,7 @@ const buildUpdateParams = (questionnaire: NexusGenInputs["UpdateQuestionnaireInp
   };
 }
 
-export const upateQuestionnaire = mutationField("UpdateQuestionnaire", {
+export const upateQuestionnaire = mutationField("updateQuestionnaire", {
   type: updateQuestionnairePayload,
   args: {
     questionnaire: nonNull(arg({
