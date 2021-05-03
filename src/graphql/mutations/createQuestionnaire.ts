@@ -11,24 +11,23 @@ export const createQuestionnaire = mutationField("createQuestionnaire", {
   },
   resolve: async (_root, args, context) => {
     const { prismaClient } = context;
-    const questionnaire = args.questionnaire;
 
-    const questions = questionnaire.questions.map((v) => {
-      return {
-        ...v,
-        options: {
-          create: v.options,
-        },
-      }
-    });
+    const questionnaire = {
+      ...args.questionnaire,
+      questions: {
+        create:args.questionnaire.questions.map((question) => {
+          return {
+            ...question,
+            options: {
+              create: question.options,
+            },
+          }
+        }),
+      },
+    };
 
     const res = await prismaClient.questionnaire.create({
-      data: {
-        ...questionnaire,
-        questions: {
-          create: questions,
-        }
-      },
+      data: questionnaire,
       select: {
         id: true,
         title: true,
