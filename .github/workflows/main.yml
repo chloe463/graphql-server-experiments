@@ -37,5 +37,8 @@ jobs:
     - name: Test package
       run: yarn test
 
+    - name: Type check
+      run: yarn type-check
+
     # - name: Package building test
     #   run: yarn build
