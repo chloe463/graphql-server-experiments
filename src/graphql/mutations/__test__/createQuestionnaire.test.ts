@@ -3,17 +3,28 @@ import { gql } from "apollo-server";
 import { createTestClient } from "apollo-server-testing";
 import DataLoader from "dataloader";
 import { constructTestServer } from "../../../testUtils";
-import { NexusGenInputs, NexusGenObjects } from "../../generated/typings";
+import { NexusGenInputs, NexusGenObjects, NexusGenRootTypes } from "../../generated/typings";
 
 const prismaClientMock = (PrismaClient as any) as jest.Mock<PrismaClient>;
 const optionsLoaderMock = (DataLoader as any) as jest.Mock<DataLoader<number, any, number>>
 
-type Variables = NexusGenInputs["CreateQuestionnaireInput"];
-type Result = NexusGenObjects["CreateQuestionnairePayload"]["questionnaire"];
+type CreateQuestionnaireInput = NexusGenInputs["CreateQuestionnaireInput"];
+type CreateQuestionnaireVariables = {
+  input: CreateQuestionnaireInput
+};
+type CreateQuestionnaireResponse =
+  Partial<Omit<NexusGenObjects["CreateQuestionnairePayload"]["questionnaire"], "questions">>
+  & {
+    questions?: Array<
+      Partial<Omit<NexusGenRootTypes["Question"], "options"> & {
+        options?: Array<Partial<NexusGenRootTypes["Option"]>>
+      }>
+    >
+  };
 
 const CREATE_QUESTIONNAIRE_MUTATION = gql`
-  mutation CreateQuestionnaire($questionnaire: CreateQuestionnaireInput!) {
-    createQuestionnaire(questionnaire: $questionnaire) {
+  mutation CreateQuestionnaire($input: CreateQuestionnaireInput!) {
+    createQuestionnaire(questionnaire: $input) {
       questionnaire {
         id
         title
@@ -37,7 +48,7 @@ const CREATE_QUESTIONNAIRE_MUTATION = gql`
 
 describe("[Mutation] createQuestionnaire", () => {
   it("can create new questionnaire", async () => {
-    const variables: Variables = {
+    const createQuestionnaireInput: CreateQuestionnaireInput = {
       title: "Test questionnaire",
       description: "inventore eum sed laboriosam qui repudiandae in eum quidem illo",
       state: 1,
@@ -108,10 +119,10 @@ describe("[Mutation] createQuestionnaire", () => {
     });
 
     const { mutate } = createTestClient(server);
-    const res = await mutate({
+    const res = await mutate<CreateQuestionnaireResponse, CreateQuestionnaireVariables>({
       mutation: CREATE_QUESTIONNAIRE_MUTATION,
       variables: {
-        questionnaire: variables,
+        input: createQuestionnaireInput,
       },
     });
     expect(res).toMatchSnapshot();
