@@ -10,9 +10,47 @@ type Comment {
   postId: Int!
 }
 
+input CreateOptionInput {
+  text: String!
+}
+
+input CreateQuestionInput {
+  options: [CreateOptionInput]!
+  required: Boolean!
+  text: String!
+  type: Int!
+}
+
+input CreateQuestionnaireInput {
+  description: String!
+  endAt: DateTime!
+  questions: [CreateQuestionInput]!
+  startAt: DateTime!
+  state: Int!
+  title: String!
+}
+
+type CreateQuestionnairePayload {
+  questionnaire: Questionnaire
+}
+
 scalar Date
 
 scalar DateTime
+
+input DeleteQuestionnaireInput {
+  id: Int!
+}
+
+type DeleteQuestionnairePayload {
+  result: Boolean
+}
+
+type Mutation {
+  createQuestionnaire(questionnaire: CreateQuestionnaireInput): CreateQuestionnairePayload
+  deleteQuestionnaire(id: Int!): DeleteQuestionnairePayload
+  updateQuestionnaire(questionnaire: UpdateQuestionnaireInput!): UpdateQuestionnairePayload
+}
 
 type Option {
   id: Int!
@@ -143,4 +181,31 @@ type QuestionnaireEdge {
 
   """https://facebook.github.io/relay/graphql/connections.htm#sec-Node"""
   node: Questionnaire!
+}
+
+input UpdateOptionInput {
+  id: Int
+  text: String
+}
+
+input UpdateQuestionInput {
+  id: Int
+  options: [UpdateOptionInput]
+  required: Boolean
+  text: String
+  type: Int
+}
+
+input UpdateQuestionnaireInput {
+  description: String
+  endAt: DateTime
+  id: Int!
+  questions: [UpdateQuestionInput]
+  startAt: DateTime
+  state: Int
+  title: String
+}
+
+type UpdateQuestionnairePayload {
+  questionnaire: Questionnaire
 }

@@ -48,6 +48,8 @@ model Questionnaire {
   questions   Question[]
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt @default(now())
+  deleted     Boolean  @default(false)
+  deletedAt   DateTime?
 }
 
 model Question {

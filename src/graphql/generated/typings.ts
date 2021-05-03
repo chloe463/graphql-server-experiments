@@ -34,6 +34,46 @@ declare global {
 }
 
 export interface NexusGenInputs {
+  CreateOptionInput: { // input type
+    text: string; // String!
+  }
+  CreateQuestionInput: { // input type
+    options: Array<NexusGenInputs['CreateOptionInput'] | null>; // [CreateOptionInput]!
+    required: boolean; // Boolean!
+    text: string; // String!
+    type: number; // Int!
+  }
+  CreateQuestionnaireInput: { // input type
+    description: string; // String!
+    endAt: NexusGenScalars['DateTime']; // DateTime!
+    questions: Array<NexusGenInputs['CreateQuestionInput'] | null>; // [CreateQuestionInput]!
+    startAt: NexusGenScalars['DateTime']; // DateTime!
+    state: number; // Int!
+    title: string; // String!
+  }
+  DeleteQuestionnaireInput: { // input type
+    id: number; // Int!
+  }
+  UpdateOptionInput: { // input type
+    id?: number | null; // Int
+    text?: string | null; // String
+  }
+  UpdateQuestionInput: { // input type
+    id?: number | null; // Int
+    options?: Array<NexusGenInputs['UpdateOptionInput'] | null> | null; // [UpdateOptionInput]
+    required?: boolean | null; // Boolean
+    text?: string | null; // String
+    type?: number | null; // Int
+  }
+  UpdateQuestionnaireInput: { // input type
+    description?: string | null; // String
+    endAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    id: number; // Int!
+    questions?: Array<NexusGenInputs['UpdateQuestionInput'] | null> | null; // [UpdateQuestionInput]
+    startAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    state?: number | null; // Int
+    title?: string | null; // String
+  }
 }
 
 export interface NexusGenEnums {
@@ -57,6 +97,13 @@ export interface NexusGenObjects {
     name: string; // String!
     postId: number; // Int!
   }
+  CreateQuestionnairePayload: { // root type
+    questionnaire?: NexusGenRootTypes['Questionnaire'] | null; // Questionnaire
+  }
+  DeleteQuestionnairePayload: { // root type
+    result?: boolean | null; // Boolean
+  }
+  Mutation: {};
   Option: { // root type
     id: number; // Int!
     text: string; // String!
@@ -104,6 +151,9 @@ export interface NexusGenObjects {
     cursor: string; // String!
     node: NexusGenRootTypes['Questionnaire']; // Questionnaire!
   }
+  UpdateQuestionnairePayload: { // root type
+    questionnaire?: NexusGenRootTypes['Questionnaire'] | null; // Questionnaire
+  }
 }
 
 export interface NexusGenInterfaces {
@@ -123,6 +173,17 @@ export interface NexusGenFieldTypes {
     id: number; // Int!
     name: string; // String!
     postId: number; // Int!
+  }
+  CreateQuestionnairePayload: { // field return type
+    questionnaire: NexusGenRootTypes['Questionnaire'] | null; // Questionnaire
+  }
+  DeleteQuestionnairePayload: { // field return type
+    result: boolean | null; // Boolean
+  }
+  Mutation: { // field return type
+    createQuestionnaire: NexusGenRootTypes['CreateQuestionnairePayload'] | null; // CreateQuestionnairePayload
+    deleteQuestionnaire: NexusGenRootTypes['DeleteQuestionnairePayload'] | null; // DeleteQuestionnairePayload
+    updateQuestionnaire: NexusGenRootTypes['UpdateQuestionnairePayload'] | null; // UpdateQuestionnairePayload
   }
   Option: { // field return type
     id: number; // Int!
@@ -180,6 +241,9 @@ export interface NexusGenFieldTypes {
     cursor: string; // String!
     node: NexusGenRootTypes['Questionnaire']; // Questionnaire!
   }
+  UpdateQuestionnairePayload: { // field return type
+    questionnaire: NexusGenRootTypes['Questionnaire'] | null; // Questionnaire
+  }
 }
 
 export interface NexusGenFieldTypeNames {
@@ -189,6 +253,17 @@ export interface NexusGenFieldTypeNames {
     id: 'Int'
     name: 'String'
     postId: 'Int'
+  }
+  CreateQuestionnairePayload: { // field return type name
+    questionnaire: 'Questionnaire'
+  }
+  DeleteQuestionnairePayload: { // field return type name
+    result: 'Boolean'
+  }
+  Mutation: { // field return type name
+    createQuestionnaire: 'CreateQuestionnairePayload'
+    deleteQuestionnaire: 'DeleteQuestionnairePayload'
+    updateQuestionnaire: 'UpdateQuestionnairePayload'
   }
   Option: { // field return type name
     id: 'Int'
@@ -246,9 +321,23 @@ export interface NexusGenFieldTypeNames {
     cursor: 'String'
     node: 'Questionnaire'
   }
+  UpdateQuestionnairePayload: { // field return type name
+    questionnaire: 'Questionnaire'
+  }
 }
 
 export interface NexusGenArgTypes {
+  Mutation: {
+    createQuestionnaire: { // args
+      questionnaire?: NexusGenInputs['CreateQuestionnaireInput'] | null; // CreateQuestionnaireInput
+    }
+    deleteQuestionnaire: { // args
+      id: number; // Int!
+    }
+    updateQuestionnaire: { // args
+      questionnaire: NexusGenInputs['UpdateQuestionnaireInput']; // UpdateQuestionnaireInput!
+    }
+  }
   Query: {
     comments: { // args
       postId: number; // Int!
@@ -281,7 +370,7 @@ export interface NexusGenTypeInterfaces {
 
 export type NexusGenObjectNames = keyof NexusGenObjects;
 
-export type NexusGenInputNames = never;
+export type NexusGenInputNames = keyof NexusGenInputs;
 
 export type NexusGenEnumNames = never;
 
