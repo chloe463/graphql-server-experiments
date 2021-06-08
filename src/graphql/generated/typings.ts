@@ -38,7 +38,7 @@ export interface NexusGenInputs {
     text: string; // String!
   }
   CreateQuestionInput: { // input type
-    options: Array<NexusGenInputs['CreateOptionInput'] | null>; // [CreateOptionInput]!
+    options?: Array<NexusGenInputs['CreateOptionInput'] | null> | null; // [CreateOptionInput]
     required: boolean; // Boolean!
     text: string; // String!
     type: number; // Int!
@@ -46,9 +46,9 @@ export interface NexusGenInputs {
   CreateQuestionnaireInput: { // input type
     description: string; // String!
     endAt: NexusGenScalars['DateTime']; // DateTime!
-    questions: Array<NexusGenInputs['CreateQuestionInput'] | null>; // [CreateQuestionInput]!
+    questions?: Array<NexusGenInputs['CreateQuestionInput'] | null> | null; // [CreateQuestionInput]
     startAt: NexusGenScalars['DateTime']; // DateTime!
-    state: number; // Int!
+    state?: number | null; // Int
     title: string; // String!
   }
   DeleteQuestionnaireInput: { // input type

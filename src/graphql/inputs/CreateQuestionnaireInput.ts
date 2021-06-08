@@ -13,7 +13,7 @@ export const createQuestionInput = inputObjectType({
     t.nonNull.string("text");
     t.nonNull.int("type");
     t.nonNull.boolean("required");
-    t.nonNull.list.field("options", {
+    t.list.field("options", {
       type: createOptionInput,
     });
   },
@@ -24,10 +24,10 @@ export const createQuestionnaireInput = inputObjectType({
   definition(t) {
     t.nonNull.string("title");
     t.nonNull.string("description");
-    t.nonNull.int("state");
+    t.int("state");
     t.nonNull.datetime("startAt");
     t.nonNull.datetime("endAt");
-    t.nonNull.list.field("questions", {
+    t.list.field("questions", {
       type: createQuestionInput,
     });
   },

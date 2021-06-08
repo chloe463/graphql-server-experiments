@@ -15,7 +15,7 @@ input CreateOptionInput {
 }
 
 input CreateQuestionInput {
-  options: [CreateOptionInput]!
+  options: [CreateOptionInput]
   required: Boolean!
   text: String!
   type: Int!
@@ -24,9 +24,9 @@ input CreateQuestionInput {
 input CreateQuestionnaireInput {
   description: String!
   endAt: DateTime!
-  questions: [CreateQuestionInput]!
+  questions: [CreateQuestionInput]
   startAt: DateTime!
-  state: Int!
+  state: Int
   title: String!
 }
 
