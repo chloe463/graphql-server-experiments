@@ -209,6 +209,7 @@ export interface NexusGenFieldTypes {
     comments: Array<NexusGenRootTypes['Comment'] | null>; // [Comment]!
     postConnection: NexusGenRootTypes['QueryPostConnection_Connection']; // QueryPostConnection_Connection!
     posts: Array<NexusGenRootTypes['Post'] | null> | null; // [Post]
+    questionnaire: NexusGenRootTypes['Questionnaire'] | null; // Questionnaire
     questionnaireConnection: NexusGenRootTypes['QueryQuestionnaireConnection_Connection']; // QueryQuestionnaireConnection_Connection!
     questionnaires: Array<NexusGenRootTypes['Questionnaire'] | null> | null; // [Questionnaire]
   }
@@ -289,6 +290,7 @@ export interface NexusGenFieldTypeNames {
     comments: 'Comment'
     postConnection: 'QueryPostConnection_Connection'
     posts: 'Post'
+    questionnaire: 'Questionnaire'
     questionnaireConnection: 'QueryQuestionnaireConnection_Connection'
     questionnaires: 'Questionnaire'
   }
@@ -352,6 +354,9 @@ export interface NexusGenArgTypes {
     posts: { // args
       limit: number | null; // Int
       start: string | null; // String
+    }
+    questionnaire: { // args
+      id?: number | null; // Int
     }
     questionnaireConnection: { // args
       after?: string | null; // String

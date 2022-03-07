@@ -116,6 +116,7 @@ type Query {
     query: String
   ): QueryPostConnection_Connection!
   posts(limit: Int = 10, start: String = "0"): [Post]
+  questionnaire(id: Int): Questionnaire
   questionnaireConnection(
     """Returns the elements in the list that come after the specified cursor"""
     after: String
