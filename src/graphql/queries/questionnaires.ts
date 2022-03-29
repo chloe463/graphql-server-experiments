@@ -5,6 +5,11 @@ export const questionnaires = queryField("questionnaires", {
   resolve: async(_root, args, context) => {
     const { prismaClient } = context;
     const questionnaires = await prismaClient.questionnaire.findMany({
+      where: {
+        deleted: {
+          equals: false,
+        },
+      },
       include: { questions: true,  },
     });
     return questionnaires;
