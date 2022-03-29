@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "NODE_ENV=development nodemon --exec babel-node src/index.ts --extensions '.ts,.js'",
+    "dev": "NODE_ENV=development nodemon --exec babel-node src/index.ts --extensions '.ts,.js'",
     "test": "TZ=Asia/Tokyo jest --maxWorkers=50%",
     "ts-node": "ts-node --compiler-options '{\"module\":\"CommonJS\"}'",
     "type-check": "tsc --noEmit"
