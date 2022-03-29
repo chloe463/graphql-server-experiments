@@ -15,7 +15,7 @@ export const createQuestionnaire = mutationField("createQuestionnaire", {
     const questionnaire = {
       ...args.questionnaire,
       questions: {
-        create:args.questionnaire.questions.map((question) => {
+        create: args.questionnaire.questions?.map((question) => {
           return {
             ...question,
             options: {

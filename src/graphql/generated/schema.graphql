@@ -15,7 +15,7 @@ input CreateOptionInput {
 }
 
 input CreateQuestionInput {
-  options: [CreateOptionInput]!
+  options: [CreateOptionInput]
   required: Boolean!
   text: String!
   type: Int!
@@ -24,9 +24,9 @@ input CreateQuestionInput {
 input CreateQuestionnaireInput {
   description: String!
   endAt: DateTime!
-  questions: [CreateQuestionInput]!
+  questions: [CreateQuestionInput]
   startAt: DateTime!
-  state: Int!
+  state: Int
   title: String!
 }
 
@@ -116,6 +116,7 @@ type Query {
     query: String
   ): QueryPostConnection_Connection!
   posts(limit: Int = 10, start: String = "0"): [Post]
+  questionnaire(id: Int): Questionnaire
   questionnaireConnection(
     """Returns the elements in the list that come after the specified cursor"""
     after: String

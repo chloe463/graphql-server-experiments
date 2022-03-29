@@ -42,7 +42,7 @@ model Questionnaire {
   id          Int      @id @default(autoincrement())
   title       String
   description String
-  state       Int
+  state       Int      @default(1)
   startAt     DateTime
   endAt       DateTime
   questions   Question[]
