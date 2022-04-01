@@ -16,10 +16,10 @@ export const deleteQuestionnaire = mutationField("deleteQuestionnaire", {
         },
       });
 
-      return { result: true };
+      return { id: args.id, result: true };
     } catch (e) {
       console.error(e);
-      return { result: false };
+      return { id: args.id, result: false };
     }
   },
 });

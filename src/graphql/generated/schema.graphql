@@ -43,6 +43,7 @@ input DeleteQuestionnaireInput {
 }
 
 type DeleteQuestionnairePayload {
+  id: Int
   result: Boolean
 }
 

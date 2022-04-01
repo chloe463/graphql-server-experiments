@@ -101,6 +101,7 @@ export interface NexusGenObjects {
     questionnaire?: NexusGenRootTypes['Questionnaire'] | null; // Questionnaire
   }
   DeleteQuestionnairePayload: { // root type
+    id?: number | null; // Int
     result?: boolean | null; // Boolean
   }
   Mutation: {};
@@ -178,6 +179,7 @@ export interface NexusGenFieldTypes {
     questionnaire: NexusGenRootTypes['Questionnaire'] | null; // Questionnaire
   }
   DeleteQuestionnairePayload: { // field return type
+    id: number | null; // Int
     result: boolean | null; // Boolean
   }
   Mutation: { // field return type
@@ -259,6 +261,7 @@ export interface NexusGenFieldTypeNames {
     questionnaire: 'Questionnaire'
   }
   DeleteQuestionnairePayload: { // field return type name
+    id: 'Int'
     result: 'Boolean'
   }
   Mutation: { // field return type name
