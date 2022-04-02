@@ -2,6 +2,10 @@
 ### Do not make changes to this file directly
 
 
+type CancelToDeleteQuestionnairePayload {
+  questionnaire: Questionnaire
+}
+
 type Comment {
   body: String!
   email: String!
@@ -48,6 +52,7 @@ type DeleteQuestionnairePayload {
 }
 
 type Mutation {
+  cancelToDeleteQuestionnaire(id: Int!): CancelToDeleteQuestionnairePayload
   createQuestionnaire(questionnaire: CreateQuestionnaireInput): CreateQuestionnairePayload
   deleteQuestionnaire(id: Int!): DeleteQuestionnairePayload
   updateQuestionnaire(questionnaire: UpdateQuestionnaireInput!): UpdateQuestionnairePayload

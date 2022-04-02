@@ -90,6 +90,9 @@ export interface NexusGenScalars {
 }
 
 export interface NexusGenObjects {
+  CancelToDeleteQuestionnairePayload: { // root type
+    questionnaire?: NexusGenRootTypes['Questionnaire'] | null; // Questionnaire
+  }
   Comment: { // root type
     body: string; // String!
     email: string; // String!
@@ -168,6 +171,9 @@ export type NexusGenRootTypes = NexusGenObjects
 export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
+  CancelToDeleteQuestionnairePayload: { // field return type
+    questionnaire: NexusGenRootTypes['Questionnaire'] | null; // Questionnaire
+  }
   Comment: { // field return type
     body: string; // String!
     email: string; // String!
@@ -183,6 +189,7 @@ export interface NexusGenFieldTypes {
     result: boolean | null; // Boolean
   }
   Mutation: { // field return type
+    cancelToDeleteQuestionnaire: NexusGenRootTypes['CancelToDeleteQuestionnairePayload'] | null; // CancelToDeleteQuestionnairePayload
     createQuestionnaire: NexusGenRootTypes['CreateQuestionnairePayload'] | null; // CreateQuestionnairePayload
     deleteQuestionnaire: NexusGenRootTypes['DeleteQuestionnairePayload'] | null; // DeleteQuestionnairePayload
     updateQuestionnaire: NexusGenRootTypes['UpdateQuestionnairePayload'] | null; // UpdateQuestionnairePayload
@@ -250,6 +257,9 @@ export interface NexusGenFieldTypes {
 }
 
 export interface NexusGenFieldTypeNames {
+  CancelToDeleteQuestionnairePayload: { // field return type name
+    questionnaire: 'Questionnaire'
+  }
   Comment: { // field return type name
     body: 'String'
     email: 'String'
@@ -265,6 +275,7 @@ export interface NexusGenFieldTypeNames {
     result: 'Boolean'
   }
   Mutation: { // field return type name
+    cancelToDeleteQuestionnaire: 'CancelToDeleteQuestionnairePayload'
     createQuestionnaire: 'CreateQuestionnairePayload'
     deleteQuestionnaire: 'DeleteQuestionnairePayload'
     updateQuestionnaire: 'UpdateQuestionnairePayload'
@@ -333,6 +344,9 @@ export interface NexusGenFieldTypeNames {
 
 export interface NexusGenArgTypes {
   Mutation: {
+    cancelToDeleteQuestionnaire: { // args
+      id: number; // Int!
+    }
     createQuestionnaire: { // args
       questionnaire?: NexusGenInputs['CreateQuestionnaireInput'] | null; // CreateQuestionnaireInput
     }
