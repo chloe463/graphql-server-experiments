@@ -51,6 +51,9 @@ export interface NexusGenInputs {
     state?: number | null; // Int
     title: string; // String!
   }
+  CreateTodoInput: { // input type
+    task: string; // String!
+  }
   DeleteQuestionnaireInput: { // input type
     id: number; // Int!
   }
@@ -73,6 +76,11 @@ export interface NexusGenInputs {
     startAt?: NexusGenScalars['DateTime'] | null; // DateTime
     state?: number | null; // Int
     title?: string | null; // String
+  }
+  UpdateTodoInput: { // input type
+    finishedAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    id: number; // Int!
+    task: string; // String!
   }
 }
 
@@ -103,7 +111,14 @@ export interface NexusGenObjects {
   CreateQuestionnairePayload: { // root type
     questionnaire?: NexusGenRootTypes['Questionnaire'] | null; // Questionnaire
   }
+  CreateTodoPayload: { // root type
+    todo?: NexusGenRootTypes['Todo'] | null; // Todo
+  }
   DeleteQuestionnairePayload: { // root type
+    id?: number | null; // Int
+    result?: boolean | null; // Boolean
+  }
+  DeleteTodoPayload: { // root type
     id?: number | null; // Int
     result?: boolean | null; // Boolean
   }
@@ -137,6 +152,10 @@ export interface NexusGenObjects {
     edges: NexusGenRootTypes['QuestionnaireEdge'][]; // [QuestionnaireEdge!]!
     pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
   }
+  QueryTodoConnection_Connection: { // root type
+    edges: NexusGenRootTypes['TodoEdge'][]; // [TodoEdge!]!
+    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
+  }
   Question: { // root type
     id: number; // Int!
     text: string; // String!
@@ -155,8 +174,22 @@ export interface NexusGenObjects {
     cursor: string; // String!
     node: NexusGenRootTypes['Questionnaire']; // Questionnaire!
   }
+  Todo: { // root type
+    createdAt: NexusGenScalars['DateTime']; // DateTime!
+    finishedAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    id: number; // Int!
+    task: string; // String!
+    updatedAt: NexusGenScalars['DateTime']; // DateTime!
+  }
+  TodoEdge: { // root type
+    cursor: string; // String!
+    node: NexusGenRootTypes['Todo']; // Todo!
+  }
   UpdateQuestionnairePayload: { // root type
     questionnaire?: NexusGenRootTypes['Questionnaire'] | null; // Questionnaire
+  }
+  UpdateTodoPayload: { // root type
+    todo?: NexusGenRootTypes['Todo'] | null; // Todo
   }
 }
 
@@ -184,15 +217,25 @@ export interface NexusGenFieldTypes {
   CreateQuestionnairePayload: { // field return type
     questionnaire: NexusGenRootTypes['Questionnaire'] | null; // Questionnaire
   }
+  CreateTodoPayload: { // field return type
+    todo: NexusGenRootTypes['Todo'] | null; // Todo
+  }
   DeleteQuestionnairePayload: { // field return type
+    id: number | null; // Int
+    result: boolean | null; // Boolean
+  }
+  DeleteTodoPayload: { // field return type
     id: number | null; // Int
     result: boolean | null; // Boolean
   }
   Mutation: { // field return type
     cancelToDeleteQuestionnaire: NexusGenRootTypes['CancelToDeleteQuestionnairePayload'] | null; // CancelToDeleteQuestionnairePayload
     createQuestionnaire: NexusGenRootTypes['CreateQuestionnairePayload'] | null; // CreateQuestionnairePayload
+    createTodo: NexusGenRootTypes['CreateTodoPayload'] | null; // CreateTodoPayload
     deleteQuestionnaire: NexusGenRootTypes['DeleteQuestionnairePayload'] | null; // DeleteQuestionnairePayload
+    deleteTodo: NexusGenRootTypes['DeleteTodoPayload'] | null; // DeleteTodoPayload
     updateQuestionnaire: NexusGenRootTypes['UpdateQuestionnairePayload'] | null; // UpdateQuestionnairePayload
+    updateTodo: NexusGenRootTypes['UpdateTodoPayload'] | null; // UpdateTodoPayload
   }
   Option: { // field return type
     id: number; // Int!
@@ -221,6 +264,7 @@ export interface NexusGenFieldTypes {
     questionnaire: NexusGenRootTypes['Questionnaire'] | null; // Questionnaire
     questionnaireConnection: NexusGenRootTypes['QueryQuestionnaireConnection_Connection']; // QueryQuestionnaireConnection_Connection!
     questionnaires: Array<NexusGenRootTypes['Questionnaire'] | null> | null; // [Questionnaire]
+    todoConnection: NexusGenRootTypes['QueryTodoConnection_Connection']; // QueryTodoConnection_Connection!
   }
   QueryPostConnection_Connection: { // field return type
     edges: NexusGenRootTypes['PostEdge'][]; // [PostEdge!]!
@@ -229,6 +273,11 @@ export interface NexusGenFieldTypes {
   }
   QueryQuestionnaireConnection_Connection: { // field return type
     edges: NexusGenRootTypes['QuestionnaireEdge'][]; // [QuestionnaireEdge!]!
+    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
+    totalCount: number; // Int!
+  }
+  QueryTodoConnection_Connection: { // field return type
+    edges: NexusGenRootTypes['TodoEdge'][]; // [TodoEdge!]!
     pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
     totalCount: number; // Int!
   }
@@ -251,8 +300,22 @@ export interface NexusGenFieldTypes {
     cursor: string; // String!
     node: NexusGenRootTypes['Questionnaire']; // Questionnaire!
   }
+  Todo: { // field return type
+    createdAt: NexusGenScalars['DateTime']; // DateTime!
+    finishedAt: NexusGenScalars['DateTime'] | null; // DateTime
+    id: number; // Int!
+    task: string; // String!
+    updatedAt: NexusGenScalars['DateTime']; // DateTime!
+  }
+  TodoEdge: { // field return type
+    cursor: string; // String!
+    node: NexusGenRootTypes['Todo']; // Todo!
+  }
   UpdateQuestionnairePayload: { // field return type
     questionnaire: NexusGenRootTypes['Questionnaire'] | null; // Questionnaire
+  }
+  UpdateTodoPayload: { // field return type
+    todo: NexusGenRootTypes['Todo'] | null; // Todo
   }
 }
 
@@ -270,15 +333,25 @@ export interface NexusGenFieldTypeNames {
   CreateQuestionnairePayload: { // field return type name
     questionnaire: 'Questionnaire'
   }
+  CreateTodoPayload: { // field return type name
+    todo: 'Todo'
+  }
   DeleteQuestionnairePayload: { // field return type name
+    id: 'Int'
+    result: 'Boolean'
+  }
+  DeleteTodoPayload: { // field return type name
     id: 'Int'
     result: 'Boolean'
   }
   Mutation: { // field return type name
     cancelToDeleteQuestionnaire: 'CancelToDeleteQuestionnairePayload'
     createQuestionnaire: 'CreateQuestionnairePayload'
+    createTodo: 'CreateTodoPayload'
     deleteQuestionnaire: 'DeleteQuestionnairePayload'
+    deleteTodo: 'DeleteTodoPayload'
     updateQuestionnaire: 'UpdateQuestionnairePayload'
+    updateTodo: 'UpdateTodoPayload'
   }
   Option: { // field return type name
     id: 'Int'
@@ -307,6 +380,7 @@ export interface NexusGenFieldTypeNames {
     questionnaire: 'Questionnaire'
     questionnaireConnection: 'QueryQuestionnaireConnection_Connection'
     questionnaires: 'Questionnaire'
+    todoConnection: 'QueryTodoConnection_Connection'
   }
   QueryPostConnection_Connection: { // field return type name
     edges: 'PostEdge'
@@ -315,6 +389,11 @@ export interface NexusGenFieldTypeNames {
   }
   QueryQuestionnaireConnection_Connection: { // field return type name
     edges: 'QuestionnaireEdge'
+    pageInfo: 'PageInfo'
+    totalCount: 'Int'
+  }
+  QueryTodoConnection_Connection: { // field return type name
+    edges: 'TodoEdge'
     pageInfo: 'PageInfo'
     totalCount: 'Int'
   }
@@ -337,8 +416,22 @@ export interface NexusGenFieldTypeNames {
     cursor: 'String'
     node: 'Questionnaire'
   }
+  Todo: { // field return type name
+    createdAt: 'DateTime'
+    finishedAt: 'DateTime'
+    id: 'Int'
+    task: 'String'
+    updatedAt: 'DateTime'
+  }
+  TodoEdge: { // field return type name
+    cursor: 'String'
+    node: 'Todo'
+  }
   UpdateQuestionnairePayload: { // field return type name
     questionnaire: 'Questionnaire'
+  }
+  UpdateTodoPayload: { // field return type name
+    todo: 'Todo'
   }
 }
 
@@ -350,11 +443,20 @@ export interface NexusGenArgTypes {
     createQuestionnaire: { // args
       questionnaire?: NexusGenInputs['CreateQuestionnaireInput'] | null; // CreateQuestionnaireInput
     }
+    createTodo: { // args
+      todo?: NexusGenInputs['CreateTodoInput'] | null; // CreateTodoInput
+    }
     deleteQuestionnaire: { // args
+      id: number; // Int!
+    }
+    deleteTodo: { // args
       id: number; // Int!
     }
     updateQuestionnaire: { // args
       questionnaire: NexusGenInputs['UpdateQuestionnaireInput']; // UpdateQuestionnaireInput!
+    }
+    updateTodo: { // args
+      todo?: NexusGenInputs['UpdateTodoInput'] | null; // UpdateTodoInput
     }
   }
   Query: {
@@ -376,6 +478,12 @@ export interface NexusGenArgTypes {
       id?: number | null; // Int
     }
     questionnaireConnection: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+    }
+    todoConnection: { // args
       after?: string | null; // String
       before?: string | null; // String
       first?: number | null; // Int

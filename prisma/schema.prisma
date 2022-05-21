@@ -72,3 +72,12 @@ model Option {
   createdAt       DateTime      @default(now())
   updatedAt       DateTime      @updatedAt @default(now())
 }
+
+model Todo {
+  id              Int           @id @default(autoincrement())
+  task            String
+  finishedAt      DateTime?
+  deletedAt       DateTime?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt @default(now())
+}
