@@ -77,6 +77,11 @@ export interface NexusGenInputs {
     state?: number | null; // Int
     title?: string | null; // String
   }
+  UpdateTodoInput: { // input type
+    finishedAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    id: number; // Int!
+    task: string; // String!
+  }
 }
 
 export interface NexusGenEnums {
@@ -179,6 +184,9 @@ export interface NexusGenObjects {
   UpdateQuestionnairePayload: { // root type
     questionnaire?: NexusGenRootTypes['Questionnaire'] | null; // Questionnaire
   }
+  UpdateTodoPayload: { // root type
+    todo?: NexusGenRootTypes['Todo'] | null; // Todo
+  }
 }
 
 export interface NexusGenInterfaces {
@@ -218,6 +226,7 @@ export interface NexusGenFieldTypes {
     createTodo: NexusGenRootTypes['CreateTodoPayload'] | null; // CreateTodoPayload
     deleteQuestionnaire: NexusGenRootTypes['DeleteQuestionnairePayload'] | null; // DeleteQuestionnairePayload
     updateQuestionnaire: NexusGenRootTypes['UpdateQuestionnairePayload'] | null; // UpdateQuestionnairePayload
+    updateTodo: NexusGenRootTypes['UpdateTodoPayload'] | null; // UpdateTodoPayload
   }
   Option: { // field return type
     id: number; // Int!
@@ -296,6 +305,9 @@ export interface NexusGenFieldTypes {
   UpdateQuestionnairePayload: { // field return type
     questionnaire: NexusGenRootTypes['Questionnaire'] | null; // Questionnaire
   }
+  UpdateTodoPayload: { // field return type
+    todo: NexusGenRootTypes['Todo'] | null; // Todo
+  }
 }
 
 export interface NexusGenFieldTypeNames {
@@ -325,6 +337,7 @@ export interface NexusGenFieldTypeNames {
     createTodo: 'CreateTodoPayload'
     deleteQuestionnaire: 'DeleteQuestionnairePayload'
     updateQuestionnaire: 'UpdateQuestionnairePayload'
+    updateTodo: 'UpdateTodoPayload'
   }
   Option: { // field return type name
     id: 'Int'
@@ -403,6 +416,9 @@ export interface NexusGenFieldTypeNames {
   UpdateQuestionnairePayload: { // field return type name
     questionnaire: 'Questionnaire'
   }
+  UpdateTodoPayload: { // field return type name
+    todo: 'Todo'
+  }
 }
 
 export interface NexusGenArgTypes {
@@ -421,6 +437,9 @@ export interface NexusGenArgTypes {
     }
     updateQuestionnaire: { // args
       questionnaire: NexusGenInputs['UpdateQuestionnaireInput']; // UpdateQuestionnaireInput!
+    }
+    updateTodo: { // args
+      todo?: NexusGenInputs['UpdateTodoInput'] | null; // UpdateTodoInput
     }
   }
   Query: {

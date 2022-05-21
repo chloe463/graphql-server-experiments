@@ -10,3 +10,4 @@ export * from "./Question";
 export * from "./Questionnaire";
 export * from "./Todo";
 export * from "./UpdateQuestionnairePayload";
+export * from "./updateTodoPayload";

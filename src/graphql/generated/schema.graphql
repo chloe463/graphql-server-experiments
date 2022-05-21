@@ -65,6 +65,7 @@ type Mutation {
   createTodo(todo: CreateTodoInput): CreateTodoPayload
   deleteQuestionnaire(id: Int!): DeleteQuestionnairePayload
   updateQuestionnaire(questionnaire: UpdateQuestionnaireInput!): UpdateQuestionnairePayload
+  updateTodo(todo: UpdateTodoInput): UpdateTodoPayload
 }
 
 type Option {
@@ -266,4 +267,14 @@ input UpdateQuestionnaireInput {
 
 type UpdateQuestionnairePayload {
   questionnaire: Questionnaire
+}
+
+input UpdateTodoInput {
+  finishedAt: DateTime
+  id: Int!
+  task: String!
+}
+
+type UpdateTodoPayload {
+  todo: Todo
 }
