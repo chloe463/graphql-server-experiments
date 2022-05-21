@@ -137,6 +137,19 @@ type Query {
     last: Int
   ): QueryQuestionnaireConnection_Connection!
   questionnaires: [Questionnaire]
+  todoConnection(
+    """Returns the elements in the list that come after the specified cursor"""
+    after: String
+
+    """Returns the elements in the list that come before the specified cursor"""
+    before: String
+
+    """Returns the first n elements from the list."""
+    first: Int
+
+    """Returns the last n elements from the list."""
+    last: Int
+  ): QueryTodoConnection_Connection!
 }
 
 type QueryPostConnection_Connection {
@@ -157,6 +170,19 @@ type QueryQuestionnaireConnection_Connection {
   https://facebook.github.io/relay/graphql/connections.htm#sec-Edge-Types
   """
   edges: [QuestionnaireEdge!]!
+
+  """
+  https://facebook.github.io/relay/graphql/connections.htm#sec-undefined.PageInfo
+  """
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type QueryTodoConnection_Connection {
+  """
+  https://facebook.github.io/relay/graphql/connections.htm#sec-Edge-Types
+  """
+  edges: [TodoEdge!]!
 
   """
   https://facebook.github.io/relay/graphql/connections.htm#sec-undefined.PageInfo
@@ -188,6 +214,22 @@ type QuestionnaireEdge {
 
   """https://facebook.github.io/relay/graphql/connections.htm#sec-Node"""
   node: Questionnaire!
+}
+
+type Todo {
+  createdAt: DateTime!
+  finishedAt: DateTime
+  id: Int!
+  task: String!
+  updatedAt: DateTime!
+}
+
+type TodoEdge {
+  """https://facebook.github.io/relay/graphql/connections.htm#sec-Cursor"""
+  cursor: String!
+
+  """https://facebook.github.io/relay/graphql/connections.htm#sec-Node"""
+  node: Todo!
 }
 
 input UpdateOptionInput {

@@ -137,6 +137,10 @@ export interface NexusGenObjects {
     edges: NexusGenRootTypes['QuestionnaireEdge'][]; // [QuestionnaireEdge!]!
     pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
   }
+  QueryTodoConnection_Connection: { // root type
+    edges: NexusGenRootTypes['TodoEdge'][]; // [TodoEdge!]!
+    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
+  }
   Question: { // root type
     id: number; // Int!
     text: string; // String!
@@ -154,6 +158,17 @@ export interface NexusGenObjects {
   QuestionnaireEdge: { // root type
     cursor: string; // String!
     node: NexusGenRootTypes['Questionnaire']; // Questionnaire!
+  }
+  Todo: { // root type
+    createdAt: NexusGenScalars['DateTime']; // DateTime!
+    finishedAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    id: number; // Int!
+    task: string; // String!
+    updatedAt: NexusGenScalars['DateTime']; // DateTime!
+  }
+  TodoEdge: { // root type
+    cursor: string; // String!
+    node: NexusGenRootTypes['Todo']; // Todo!
   }
   UpdateQuestionnairePayload: { // root type
     questionnaire?: NexusGenRootTypes['Questionnaire'] | null; // Questionnaire
@@ -221,6 +236,7 @@ export interface NexusGenFieldTypes {
     questionnaire: NexusGenRootTypes['Questionnaire'] | null; // Questionnaire
     questionnaireConnection: NexusGenRootTypes['QueryQuestionnaireConnection_Connection']; // QueryQuestionnaireConnection_Connection!
     questionnaires: Array<NexusGenRootTypes['Questionnaire'] | null> | null; // [Questionnaire]
+    todoConnection: NexusGenRootTypes['QueryTodoConnection_Connection']; // QueryTodoConnection_Connection!
   }
   QueryPostConnection_Connection: { // field return type
     edges: NexusGenRootTypes['PostEdge'][]; // [PostEdge!]!
@@ -229,6 +245,11 @@ export interface NexusGenFieldTypes {
   }
   QueryQuestionnaireConnection_Connection: { // field return type
     edges: NexusGenRootTypes['QuestionnaireEdge'][]; // [QuestionnaireEdge!]!
+    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
+    totalCount: number; // Int!
+  }
+  QueryTodoConnection_Connection: { // field return type
+    edges: NexusGenRootTypes['TodoEdge'][]; // [TodoEdge!]!
     pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
     totalCount: number; // Int!
   }
@@ -250,6 +271,17 @@ export interface NexusGenFieldTypes {
   QuestionnaireEdge: { // field return type
     cursor: string; // String!
     node: NexusGenRootTypes['Questionnaire']; // Questionnaire!
+  }
+  Todo: { // field return type
+    createdAt: NexusGenScalars['DateTime']; // DateTime!
+    finishedAt: NexusGenScalars['DateTime'] | null; // DateTime
+    id: number; // Int!
+    task: string; // String!
+    updatedAt: NexusGenScalars['DateTime']; // DateTime!
+  }
+  TodoEdge: { // field return type
+    cursor: string; // String!
+    node: NexusGenRootTypes['Todo']; // Todo!
   }
   UpdateQuestionnairePayload: { // field return type
     questionnaire: NexusGenRootTypes['Questionnaire'] | null; // Questionnaire
@@ -307,6 +339,7 @@ export interface NexusGenFieldTypeNames {
     questionnaire: 'Questionnaire'
     questionnaireConnection: 'QueryQuestionnaireConnection_Connection'
     questionnaires: 'Questionnaire'
+    todoConnection: 'QueryTodoConnection_Connection'
   }
   QueryPostConnection_Connection: { // field return type name
     edges: 'PostEdge'
@@ -315,6 +348,11 @@ export interface NexusGenFieldTypeNames {
   }
   QueryQuestionnaireConnection_Connection: { // field return type name
     edges: 'QuestionnaireEdge'
+    pageInfo: 'PageInfo'
+    totalCount: 'Int'
+  }
+  QueryTodoConnection_Connection: { // field return type name
+    edges: 'TodoEdge'
     pageInfo: 'PageInfo'
     totalCount: 'Int'
   }
@@ -336,6 +374,17 @@ export interface NexusGenFieldTypeNames {
   QuestionnaireEdge: { // field return type name
     cursor: 'String'
     node: 'Questionnaire'
+  }
+  Todo: { // field return type name
+    createdAt: 'DateTime'
+    finishedAt: 'DateTime'
+    id: 'Int'
+    task: 'String'
+    updatedAt: 'DateTime'
+  }
+  TodoEdge: { // field return type name
+    cursor: 'String'
+    node: 'Todo'
   }
   UpdateQuestionnairePayload: { // field return type name
     questionnaire: 'Questionnaire'
@@ -376,6 +425,12 @@ export interface NexusGenArgTypes {
       id?: number | null; // Int
     }
     questionnaireConnection: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+    }
+    todoConnection: { // args
       after?: string | null; // String
       before?: string | null; // String
       first?: number | null; // Int
