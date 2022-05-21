@@ -18,6 +18,9 @@ export const todoConnection = queryField((t) => {
           id: {
             gt: Number(args.after),
           },
+          deletedAt: {
+            equals: null,
+          },
         },
         take: Number(args.first),
       });
