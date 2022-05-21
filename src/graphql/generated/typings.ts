@@ -51,6 +51,9 @@ export interface NexusGenInputs {
     state?: number | null; // Int
     title: string; // String!
   }
+  CreateTodoInput: { // input type
+    task: string; // String!
+  }
   DeleteQuestionnaireInput: { // input type
     id: number; // Int!
   }
@@ -102,6 +105,9 @@ export interface NexusGenObjects {
   }
   CreateQuestionnairePayload: { // root type
     questionnaire?: NexusGenRootTypes['Questionnaire'] | null; // Questionnaire
+  }
+  CreateTodoPayload: { // root type
+    todo?: NexusGenRootTypes['Todo'] | null; // Todo
   }
   DeleteQuestionnairePayload: { // root type
     id?: number | null; // Int
@@ -199,6 +205,9 @@ export interface NexusGenFieldTypes {
   CreateQuestionnairePayload: { // field return type
     questionnaire: NexusGenRootTypes['Questionnaire'] | null; // Questionnaire
   }
+  CreateTodoPayload: { // field return type
+    todo: NexusGenRootTypes['Todo'] | null; // Todo
+  }
   DeleteQuestionnairePayload: { // field return type
     id: number | null; // Int
     result: boolean | null; // Boolean
@@ -206,6 +215,7 @@ export interface NexusGenFieldTypes {
   Mutation: { // field return type
     cancelToDeleteQuestionnaire: NexusGenRootTypes['CancelToDeleteQuestionnairePayload'] | null; // CancelToDeleteQuestionnairePayload
     createQuestionnaire: NexusGenRootTypes['CreateQuestionnairePayload'] | null; // CreateQuestionnairePayload
+    createTodo: NexusGenRootTypes['CreateTodoPayload'] | null; // CreateTodoPayload
     deleteQuestionnaire: NexusGenRootTypes['DeleteQuestionnairePayload'] | null; // DeleteQuestionnairePayload
     updateQuestionnaire: NexusGenRootTypes['UpdateQuestionnairePayload'] | null; // UpdateQuestionnairePayload
   }
@@ -302,6 +312,9 @@ export interface NexusGenFieldTypeNames {
   CreateQuestionnairePayload: { // field return type name
     questionnaire: 'Questionnaire'
   }
+  CreateTodoPayload: { // field return type name
+    todo: 'Todo'
+  }
   DeleteQuestionnairePayload: { // field return type name
     id: 'Int'
     result: 'Boolean'
@@ -309,6 +322,7 @@ export interface NexusGenFieldTypeNames {
   Mutation: { // field return type name
     cancelToDeleteQuestionnaire: 'CancelToDeleteQuestionnairePayload'
     createQuestionnaire: 'CreateQuestionnairePayload'
+    createTodo: 'CreateTodoPayload'
     deleteQuestionnaire: 'DeleteQuestionnairePayload'
     updateQuestionnaire: 'UpdateQuestionnairePayload'
   }
@@ -398,6 +412,9 @@ export interface NexusGenArgTypes {
     }
     createQuestionnaire: { // args
       questionnaire?: NexusGenInputs['CreateQuestionnaireInput'] | null; // CreateQuestionnaireInput
+    }
+    createTodo: { // args
+      todo?: NexusGenInputs['CreateTodoInput'] | null; // CreateTodoInput
     }
     deleteQuestionnaire: { // args
       id: number; // Int!

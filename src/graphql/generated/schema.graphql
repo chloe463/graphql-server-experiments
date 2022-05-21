@@ -38,6 +38,14 @@ type CreateQuestionnairePayload {
   questionnaire: Questionnaire
 }
 
+input CreateTodoInput {
+  task: String!
+}
+
+type CreateTodoPayload {
+  todo: Todo
+}
+
 scalar Date
 
 scalar DateTime
@@ -54,6 +62,7 @@ type DeleteQuestionnairePayload {
 type Mutation {
   cancelToDeleteQuestionnaire(id: Int!): CancelToDeleteQuestionnairePayload
   createQuestionnaire(questionnaire: CreateQuestionnaireInput): CreateQuestionnairePayload
+  createTodo(todo: CreateTodoInput): CreateTodoPayload
   deleteQuestionnaire(id: Int!): DeleteQuestionnairePayload
   updateQuestionnaire(questionnaire: UpdateQuestionnaireInput!): UpdateQuestionnairePayload
 }
