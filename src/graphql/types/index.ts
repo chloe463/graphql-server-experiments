@@ -4,6 +4,7 @@ export * from "./CreateQuestionnairePayload";
 export * from "./CreateTodoPayload";
 export * from "./DateTime";
 export * from "./DeleteQuestionnairePayload";
+export * from "./DeleteTodoPayload";
 export * from "./Option";
 export * from "./Post";
 export * from "./Question";

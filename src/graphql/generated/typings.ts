@@ -118,6 +118,10 @@ export interface NexusGenObjects {
     id?: number | null; // Int
     result?: boolean | null; // Boolean
   }
+  DeleteTodoPayload: { // root type
+    id?: number | null; // Int
+    result?: boolean | null; // Boolean
+  }
   Mutation: {};
   Option: { // root type
     id: number; // Int!
@@ -220,11 +224,16 @@ export interface NexusGenFieldTypes {
     id: number | null; // Int
     result: boolean | null; // Boolean
   }
+  DeleteTodoPayload: { // field return type
+    id: number | null; // Int
+    result: boolean | null; // Boolean
+  }
   Mutation: { // field return type
     cancelToDeleteQuestionnaire: NexusGenRootTypes['CancelToDeleteQuestionnairePayload'] | null; // CancelToDeleteQuestionnairePayload
     createQuestionnaire: NexusGenRootTypes['CreateQuestionnairePayload'] | null; // CreateQuestionnairePayload
     createTodo: NexusGenRootTypes['CreateTodoPayload'] | null; // CreateTodoPayload
     deleteQuestionnaire: NexusGenRootTypes['DeleteQuestionnairePayload'] | null; // DeleteQuestionnairePayload
+    deleteTodo: NexusGenRootTypes['DeleteTodoPayload'] | null; // DeleteTodoPayload
     updateQuestionnaire: NexusGenRootTypes['UpdateQuestionnairePayload'] | null; // UpdateQuestionnairePayload
     updateTodo: NexusGenRootTypes['UpdateTodoPayload'] | null; // UpdateTodoPayload
   }
@@ -331,11 +340,16 @@ export interface NexusGenFieldTypeNames {
     id: 'Int'
     result: 'Boolean'
   }
+  DeleteTodoPayload: { // field return type name
+    id: 'Int'
+    result: 'Boolean'
+  }
   Mutation: { // field return type name
     cancelToDeleteQuestionnaire: 'CancelToDeleteQuestionnairePayload'
     createQuestionnaire: 'CreateQuestionnairePayload'
     createTodo: 'CreateTodoPayload'
     deleteQuestionnaire: 'DeleteQuestionnairePayload'
+    deleteTodo: 'DeleteTodoPayload'
     updateQuestionnaire: 'UpdateQuestionnairePayload'
     updateTodo: 'UpdateTodoPayload'
   }
@@ -433,6 +447,9 @@ export interface NexusGenArgTypes {
       todo?: NexusGenInputs['CreateTodoInput'] | null; // CreateTodoInput
     }
     deleteQuestionnaire: { // args
+      id: number; // Int!
+    }
+    deleteTodo: { // args
       id: number; // Int!
     }
     updateQuestionnaire: { // args
