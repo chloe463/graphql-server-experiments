@@ -11,18 +11,20 @@ export const updateTodo = mutationField("updateTodo", {
   },
   resolve: async (_root, args, context) => {
     const { prismaClient } = context;
-    const res = prismaClient.todo.update({
+    const res = await prismaClient.todo.update({
       where: {
         id: args.todo.id,
       },
       data: {
         task: args.todo.task,
         finishedAt: args.todo.finishedAt || null,
+        deletedAt: null,
       },
       select: {
         id: true,
         task: true,
         finishedAt: true,
+        deletedAt: true,
         createdAt: true,
         updatedAt: true,
       },
