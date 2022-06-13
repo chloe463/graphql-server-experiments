@@ -10,5 +10,6 @@ export * from "./Post";
 export * from "./Question";
 export * from "./Questionnaire";
 export * from "./Todo";
+export * from "./TodoId";
 export * from "./UpdateQuestionnairePayload";
 export * from "./updateTodoPayload";

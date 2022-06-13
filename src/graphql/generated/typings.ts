@@ -10,12 +10,20 @@ declare global {
   interface NexusGenCustomInputMethods<TypeName extends string> {
     datetime<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "DateTime";
     date<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "Date";
+    /**
+     * Todo id
+     */
+    todoId<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "TodoId";
   }
 }
 declare global {
   interface NexusGenCustomOutputMethods<TypeName extends string> {
     datetime<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "DateTime";
     date<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "Date";
+    /**
+     * Todo id
+     */
+    todoId<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "TodoId";
     /**
      * Adds a Relay-style connection to the type, with numerous options for configuration
      *
@@ -79,7 +87,7 @@ export interface NexusGenInputs {
   }
   UpdateTodoInput: { // input type
     finishedAt?: NexusGenScalars['DateTime'] | null; // DateTime
-    id: number; // Int!
+    id: NexusGenScalars['TodoId']; // TodoId!
     task: string; // String!
   }
 }
@@ -95,6 +103,7 @@ export interface NexusGenScalars {
   ID: string
   Date: any
   DateTime: any
+  TodoId: any
 }
 
 export interface NexusGenObjects {
@@ -177,7 +186,7 @@ export interface NexusGenObjects {
   Todo: { // root type
     createdAt: NexusGenScalars['DateTime']; // DateTime!
     finishedAt?: NexusGenScalars['DateTime'] | null; // DateTime
-    id: number; // Int!
+    id: NexusGenScalars['TodoId']; // TodoId!
     task: string; // String!
     updatedAt: NexusGenScalars['DateTime']; // DateTime!
   }
@@ -303,7 +312,7 @@ export interface NexusGenFieldTypes {
   Todo: { // field return type
     createdAt: NexusGenScalars['DateTime']; // DateTime!
     finishedAt: NexusGenScalars['DateTime'] | null; // DateTime
-    id: number; // Int!
+    id: NexusGenScalars['TodoId']; // TodoId!
     task: string; // String!
     updatedAt: NexusGenScalars['DateTime']; // DateTime!
   }
@@ -419,7 +428,7 @@ export interface NexusGenFieldTypeNames {
   Todo: { // field return type name
     createdAt: 'DateTime'
     finishedAt: 'DateTime'
-    id: 'Int'
+    id: 'TodoId'
     task: 'String'
     updatedAt: 'DateTime'
   }

@@ -235,7 +235,7 @@ type QuestionnaireEdge {
 type Todo {
   createdAt: DateTime!
   finishedAt: DateTime
-  id: Int!
+  id: TodoId!
   task: String!
   updatedAt: DateTime!
 }
@@ -247,6 +247,9 @@ type TodoEdge {
   """https://facebook.github.io/relay/graphql/connections.htm#sec-Node"""
   node: Todo!
 }
+
+"""Todo id"""
+scalar TodoId
 
 input UpdateOptionInput {
   id: Int
@@ -277,7 +280,7 @@ type UpdateQuestionnairePayload {
 
 input UpdateTodoInput {
   finishedAt: DateTime
-  id: Int!
+  id: TodoId!
   task: String!
 }
 
