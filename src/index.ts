@@ -1,4 +1,5 @@
 import { ApolloServer } from "apollo-server-express";
+import cors from "cors";
 import express from "express";
 import morgan from "morgan";
 import { createContext } from "./context";
@@ -24,7 +25,10 @@ app.get("/ping", function (_, res) {
   res.send("pong");
 });
 
-app.use("/todos", todos);
+const corsOptions: cors.CorsOptions = {
+  origin: "http://localhost:3000",
+};
+app.use("/todos", cors(corsOptions), todos);
 
 app.listen(PORT, HOST, () => {
   console.log(`Server is listening on ${HOST}:${PORT}`);
