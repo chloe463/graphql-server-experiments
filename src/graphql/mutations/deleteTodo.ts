@@ -1,12 +1,13 @@
-import { intArg, mutationField, nonNull } from "nexus";
+import { arg, intArg, mutationField, nonNull } from "nexus";
 import { DeleteTodoPayload } from "../types";
 
 export const deleteTodo = mutationField("deleteTodo", {
   type: DeleteTodoPayload,
   args: {
-    id: nonNull(intArg()),
+    id: nonNull(arg({ type: "TodoId" }))
   },
   resolve: async (_root, args, { prismaClient }) => {
+    const id = args.id;
     try {
       const res = await prismaClient.todo.update({
         where: { id: args.id },

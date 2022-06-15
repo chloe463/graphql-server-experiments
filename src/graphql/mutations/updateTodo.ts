@@ -1,13 +1,15 @@
-import { arg, mutationField } from "nexus";
+import { arg, mutationField, nonNull } from "nexus";
 import { UpdateTodoInput } from "../inputs";
 import { UpdateTodoPayload } from "../types";
 
 export const updateTodo = mutationField("updateTodo", {
   type: UpdateTodoPayload,
   args: {
-    todo: arg({
-      type: UpdateTodoInput,
-    }),
+    todo: nonNull(
+      arg({
+        type: UpdateTodoInput,
+      })
+    ),
   },
   resolve: async (_root, args, context) => {
     const { prismaClient } = context;
