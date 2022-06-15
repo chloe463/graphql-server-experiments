@@ -60,7 +60,7 @@ type DeleteQuestionnairePayload {
 }
 
 type DeleteTodoPayload {
-  id: Int
+  id: TodoId
   result: Boolean
 }
 
@@ -69,9 +69,9 @@ type Mutation {
   createQuestionnaire(questionnaire: CreateQuestionnaireInput): CreateQuestionnairePayload
   createTodo(todo: CreateTodoInput): CreateTodoPayload
   deleteQuestionnaire(id: Int!): DeleteQuestionnairePayload
-  deleteTodo(id: Int!): DeleteTodoPayload
+  deleteTodo(id: TodoId!): DeleteTodoPayload
   updateQuestionnaire(questionnaire: UpdateQuestionnaireInput!): UpdateQuestionnairePayload
-  updateTodo(todo: UpdateTodoInput): UpdateTodoPayload
+  updateTodo(todo: UpdateTodoInput!): UpdateTodoPayload
 }
 
 type Option {

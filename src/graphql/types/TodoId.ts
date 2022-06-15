@@ -1,10 +1,11 @@
 import { Kind } from "graphql";
-import { scalarType } from "nexus";
+import { scalarType, asNexusMethod } from "nexus";
 
 export const TodoIdScalar = scalarType({
   name: "TodoId",
   asNexusMethod: "todoId",
   description: "Todo id",
+  sourceType: "number",
   parseValue(value) {
     return Number(value);
   },

@@ -103,7 +103,7 @@ export interface NexusGenScalars {
   ID: string
   Date: any
   DateTime: any
-  TodoId: any
+  TodoId: number
 }
 
 export interface NexusGenObjects {
@@ -128,7 +128,7 @@ export interface NexusGenObjects {
     result?: boolean | null; // Boolean
   }
   DeleteTodoPayload: { // root type
-    id?: number | null; // Int
+    id?: NexusGenScalars['TodoId'] | null; // TodoId
     result?: boolean | null; // Boolean
   }
   Mutation: {};
@@ -234,7 +234,7 @@ export interface NexusGenFieldTypes {
     result: boolean | null; // Boolean
   }
   DeleteTodoPayload: { // field return type
-    id: number | null; // Int
+    id: NexusGenScalars['TodoId'] | null; // TodoId
     result: boolean | null; // Boolean
   }
   Mutation: { // field return type
@@ -350,7 +350,7 @@ export interface NexusGenFieldTypeNames {
     result: 'Boolean'
   }
   DeleteTodoPayload: { // field return type name
-    id: 'Int'
+    id: 'TodoId'
     result: 'Boolean'
   }
   Mutation: { // field return type name
@@ -459,13 +459,13 @@ export interface NexusGenArgTypes {
       id: number; // Int!
     }
     deleteTodo: { // args
-      id: number; // Int!
+      id: NexusGenScalars['TodoId']; // TodoId!
     }
     updateQuestionnaire: { // args
       questionnaire: NexusGenInputs['UpdateQuestionnaireInput']; // UpdateQuestionnaireInput!
     }
     updateTodo: { // args
-      todo?: NexusGenInputs['UpdateTodoInput'] | null; // UpdateTodoInput
+      todo: NexusGenInputs['UpdateTodoInput']; // UpdateTodoInput!
     }
   }
   Query: {
