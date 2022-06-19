@@ -88,7 +88,7 @@ export interface NexusGenInputs {
   UpdateTodoInput: { // input type
     finishedAt?: NexusGenScalars['DateTime'] | null; // DateTime
     id: NexusGenScalars['TodoId']; // TodoId!
-    task: string; // String!
+    task?: string | null; // String
   }
 }
 
