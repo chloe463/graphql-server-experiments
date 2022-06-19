@@ -281,7 +281,7 @@ type UpdateQuestionnairePayload {
 input UpdateTodoInput {
   finishedAt: DateTime
   id: TodoId!
-  task: String!
+  task: String
 }
 
 type UpdateTodoPayload {
