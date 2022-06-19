@@ -1,5 +1,5 @@
 import { Kind } from "graphql";
-import { scalarType, asNexusMethod } from "nexus";
+import { scalarType } from "nexus";
 
 export const TodoIdScalar = scalarType({
   name: "TodoId",
