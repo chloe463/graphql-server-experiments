@@ -53,8 +53,8 @@ describe("[Mutation] updateQuestionnaire", () => {
       title: "Test questionnaire",
       description: "inventore eum sed laboriosam qui repudiandae in eum quidem illo",
       state: 1,
-      startAt: "2021-01-01 00:00:00",
-      endAt: "2021-01-31 23:59:59",
+      startAt: new Date("2021-01-01 00:00:00"),
+      endAt: new Date("2021-01-31 23:59:59"),
       questions: [
         {
           id: 1,
