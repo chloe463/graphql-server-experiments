@@ -3,7 +3,8 @@ import { scalarType } from "nexus";
 
 export const DateTimeScalar = scalarType({
   name: "DateTime",
-  asNexusMethod: 'datetime',
+  asNexusMethod: "datetime",
+  sourceType: "Date",
   parseValue: (value) => {
     return new Date(value);
   },
@@ -12,7 +13,7 @@ export const DateTimeScalar = scalarType({
   },
   parseLiteral: (ast) => {
     if (ast.kind === Kind.INT) {
-      return new Date(ast.value)
+      return new Date(ast.value);
     }
     return null;
   },
@@ -20,7 +21,8 @@ export const DateTimeScalar = scalarType({
 
 export const DateScalar = scalarType({
   name: "Date",
-  asNexusMethod: 'date',
+  asNexusMethod: "date",
+  sourceType: "Date",
   parseValue: (value) => {
     return new Date(value);
   },
@@ -29,7 +31,7 @@ export const DateScalar = scalarType({
   },
   parseLiteral: (ast) => {
     if (ast.kind === Kind.INT) {
-      return new Date(ast.value)
+      return new Date(ast.value);
     }
     return null;
   },

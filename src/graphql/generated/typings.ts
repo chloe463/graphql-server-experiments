@@ -101,8 +101,8 @@ export interface NexusGenScalars {
   Float: number
   Boolean: boolean
   ID: string
-  Date: any
-  DateTime: any
+  Date: Date
+  DateTime: Date
   TodoId: number
 }
 
