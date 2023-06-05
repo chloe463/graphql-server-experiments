@@ -14,15 +14,20 @@ export const questionnaireConnection = queryField((t) => {
       const { prismaClient } = context;
       const res = await prismaClient.questionnaire.findMany({
         where: {
-          id: {
-            gt: parseInt(args.after, 10),
+          id: args.after ? {
+            gt: Number(args.after),
+          } : {
+            lt: Number(args.before)
           },
           deleted: {
             equals: false,
           },
         },
         include: { questions: true },
-        take: args.first,
+        take: args.first || args.last,
+        orderBy: {
+          id: args.first ? "asc" : "desc",
+        },
       });
 
       const { count, max, min } = await prismaClient.questionnaire.aggregate({
@@ -45,19 +50,19 @@ export const questionnaireConnection = queryField((t) => {
           node: row,
           cursor: `${row.id}`,
         };
-      });
+      }).sort((a, b) => Number(a.cursor) - Number(b.cursor));
 
-      const first = res[0];
-      const last = res[res.length - 1];
+      const first = edges[0];
+      const last = edges[res.length - 1];
 
       return {
         edges,
         totalCount: count,
         pageInfo: {
-          hasNextPage: last.id !== max.id,
-          hasPreviousPage: first.id !== min.id,
-          startCursor: `${first.id}`,
-          endCursor: `${last.id}`,
+          hasNextPage: Number(last.cursor) !== max.id,
+          hasPreviousPage: Number(first.cursor) !== min.id,
+          startCursor: `${first.cursor}`,
+          endCursor: `${last.cursor}`,
         },
       };
     },
