@@ -93,6 +93,7 @@ export interface NexusGenInputs {
 }
 
 export interface NexusGenEnums {
+  QuestionType: "CHECKBOX" | "RADIO" | "SELECT" | "TEXT"
 }
 
 export interface NexusGenScalars {
@@ -168,7 +169,6 @@ export interface NexusGenObjects {
   Question: { // root type
     id: number; // Int!
     text: string; // String!
-    type: number; // Int!
   }
   Questionnaire: { // root type
     description: string; // String!
@@ -210,7 +210,7 @@ export interface NexusGenUnions {
 
 export type NexusGenRootTypes = NexusGenObjects
 
-export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
+export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars & NexusGenEnums
 
 export interface NexusGenFieldTypes {
   CancelToDeleteQuestionnairePayload: { // field return type
@@ -294,7 +294,7 @@ export interface NexusGenFieldTypes {
     id: number; // Int!
     options: Array<NexusGenRootTypes['Option'] | null>; // [Option]!
     text: string; // String!
-    type: number; // Int!
+    type: NexusGenEnums['QuestionType']; // QuestionType!
   }
   Questionnaire: { // field return type
     description: string; // String!
@@ -410,7 +410,7 @@ export interface NexusGenFieldTypeNames {
     id: 'Int'
     options: 'Option'
     text: 'String'
-    type: 'Int'
+    type: 'QuestionType'
   }
   Questionnaire: { // field return type name
     description: 'String'
@@ -492,6 +492,9 @@ export interface NexusGenArgTypes {
       first?: number | null; // Int
       last?: number | null; // Int
     }
+    questionnaires: { // args
+      page: number | null; // Int
+    }
     todoConnection: { // args
       after?: string | null; // String
       before?: string | null; // String
@@ -511,7 +514,7 @@ export type NexusGenObjectNames = keyof NexusGenObjects;
 
 export type NexusGenInputNames = keyof NexusGenInputs;
 
-export type NexusGenEnumNames = never;
+export type NexusGenEnumNames = keyof NexusGenEnums;
 
 export type NexusGenInterfaceNames = never;
 
