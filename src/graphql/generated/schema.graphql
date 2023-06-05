@@ -152,7 +152,7 @@ type Query {
     """Returns the last n elements from the list."""
     last: Int
   ): QueryQuestionnaireConnection_Connection!
-  questionnaires: [Questionnaire]
+  questionnaires(page: Int = 1): [Questionnaire]
   todoConnection(
     """Returns the elements in the list that come after the specified cursor"""
     after: String
@@ -211,7 +211,14 @@ type Question {
   id: Int!
   options: [Option]!
   text: String!
-  type: Int!
+  type: QuestionType!
+}
+
+enum QuestionType {
+  CHECKBOX
+  RADIO
+  SELECT
+  TEXT
 }
 
 type Questionnaire {
