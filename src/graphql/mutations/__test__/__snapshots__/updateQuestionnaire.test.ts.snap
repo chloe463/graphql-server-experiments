@@ -22,7 +22,7 @@ Object {
               },
             ],
             "text": "Question1",
-            "type": 1,
+            "type": "RADIO",
           },
           Object {
             "id": 2,
@@ -37,7 +37,7 @@ Object {
               },
             ],
             "text": "Question2",
-            "type": 2,
+            "type": "SELECT",
           },
         ],
         "startAt": "2020-12-31T15:00:00.000Z",
