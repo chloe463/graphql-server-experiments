@@ -4,13 +4,12 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "NODE_ENV=development nodemon --exec babel-node src/index.ts --extensions '.ts,.js'",
+    "dev": "NODE_ENV=development SWCRC=true node -r @swc-node/register src/index.ts",
     "test": "TZ=Asia/Tokyo jest --maxWorkers=50%",
-    "ts-node": "ts-node --compiler-options '{\"module\":\"CommonJS\"}'",
     "type-check": "tsc --noEmit"
   },
   "prisma": {
-    "seed": "ts-node prisma/seed.ts"
+    "seed": "node -r @swc-node/register prisma/seed.ts"
   },
   "dependencies": {
     "@apollo/server": "^4.0.0",
@@ -27,11 +26,10 @@
     "nexus": "^1.0.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.13.14",
-    "@babel/core": "^7.13.14",
-    "@babel/node": "^7.13.13",
-    "@babel/preset-env": "^7.13.12",
-    "@babel/preset-typescript": "^7.13.0",
+    "@swc-node/register": "^1.9.1",
+    "@swc/cli": "^0.3.12",
+    "@swc/core": "^1.4.17",
+    "@swc/jest": "^0.2.36",
     "@types/faker": "^5.5.3",
     "@types/jest": "^26.0.22",
     "@types/lodash": "^4.14.149",
