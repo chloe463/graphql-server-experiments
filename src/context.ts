@@ -1,5 +1,5 @@
+import { ExpressMiddlewareOptions } from "@apollo/server/express4";
 import { PrismaClient } from "@prisma/client";
-import { ApolloServerExpressConfig } from "apollo-server-express";
 import { JsonPlaceholderClient } from "./api/JsonPlaceholderClient";
 import { optionsLoaderFactory } from "./graphql/loaders";
 
@@ -9,12 +9,12 @@ export type Context = {
   optionsLoader: ReturnType<typeof optionsLoaderFactory>,
 };
 
-export const createContext: ApolloServerExpressConfig["context"] = () => {
+export const createContext: ExpressMiddlewareOptions<Context>["context"] = async () => {
   const prismaClient = new PrismaClient({
     log: [
       {
-          level: 'query',
-          emit: 'event',
+        level: 'query',
+        emit: 'event',
       },
     ]
   });

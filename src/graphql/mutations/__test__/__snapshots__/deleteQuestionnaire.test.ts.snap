@@ -2,17 +2,22 @@
 
 exports[`[Mutation] deleteQuestionnaire can soft delete questionnaire 1`] = `
 Object {
-  "data": Object {
-    "deleteQuestionnaire": Object {
-      "result": true,
+  "body": Object {
+    "kind": "single",
+    "singleResult": Object {
+      "data": Object {
+        "deleteQuestionnaire": Object {
+          "result": true,
+        },
+      },
+      "errors": undefined,
     },
   },
-  "errors": undefined,
-  "extensions": undefined,
   "http": Object {
-    "headers": Headers {
-      Symbol(map): Object {},
+    "headers": Map {
+      "cache-control" => "no-store",
     },
+    "status": undefined,
   },
 }
 `;
