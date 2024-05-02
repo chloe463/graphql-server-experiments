@@ -19,7 +19,9 @@ app.use(morgan("combined"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-apolloServer.applyMiddleware({ app });
+apolloServer.start().then(() => {
+  apolloServer.applyMiddleware({ app });
+});
 
 app.get("/ping", function (_, res) {
   res.send("pong");

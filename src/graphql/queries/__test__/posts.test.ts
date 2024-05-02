@@ -1,6 +1,5 @@
 import { PrismaClient } from "@prisma/client";
 import { gql } from "apollo-server";
-import { createTestClient } from "apollo-server-testing";
 import { constructTestServer } from "../../../testUtils";
 
 const prismaClientMock = (PrismaClient as any) as jest.Mock<PrismaClient>;
@@ -17,7 +16,7 @@ const GET_POST_QUERY = gql`
 `;
 
 describe("[Query] posts", () => {
-  it ("return posts", async () => {
+  it("return posts", async () => {
     (prismaClientMock as any).post = {
       findMany: jest.fn().mockReturnValue([
         {
@@ -44,8 +43,7 @@ describe("[Query] posts", () => {
       prismaClient: prismaClientMock,
     });
 
-    const { query } = createTestClient(server);
-    const res = await query({ query: GET_POST_QUERY, variables : { start: "0", limit: 3 }});
+    const res = await server.executeOperation({ query: GET_POST_QUERY, variables: { start: "0", limit: 3 } });
     expect(res).toMatchSnapshot();
   });
 });
