@@ -6,7 +6,7 @@ export const DateTimeScalar = scalarType({
   asNexusMethod: "datetime",
   sourceType: "Date",
   parseValue: (value) => {
-    return new Date(value);
+    return new Date(value as string);
   },
   serialize: (value: Date) => {
     return value.toISOString();
@@ -24,7 +24,7 @@ export const DateScalar = scalarType({
   asNexusMethod: "date",
   sourceType: "Date",
   parseValue: (value) => {
-    return new Date(value);
+    return new Date(value as string);
   },
   serialize: (value: Date) => {
     return value.toISOString().slice(0, 10);

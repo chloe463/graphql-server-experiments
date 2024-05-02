@@ -8,7 +8,26 @@ export const questionnaireConnection = queryField((t) => {
       output: true,
     },
     extendConnection: (t) => {
-      t.int("totalCount");
+      t.int("totalCount", {
+        resolve: async (_root, _args, context) => {
+          const { prismaClient } = context;
+          const { _count: count } = await prismaClient.questionnaire.aggregate({
+            _count: true,
+            where: {
+              deleted: {
+                equals: false,
+              },
+            },
+            _max: {
+              id: true,
+            },
+            _min: {
+              id: true,
+            }
+          });
+          return Number(count);
+        }
+      });
     },
     resolve: async (_root, args, context) => {
       const { prismaClient } = context;
@@ -25,7 +44,7 @@ export const questionnaireConnection = queryField((t) => {
         take: args.first,
       });
 
-      const { _count: count, _max: max, _min: min } = await prismaClient.questionnaire.aggregate({
+      const { _max: max, _min: min } = await prismaClient.questionnaire.aggregate({
         _count: true,
         where: {
           deleted: {
@@ -52,7 +71,6 @@ export const questionnaireConnection = queryField((t) => {
 
       return {
         edges,
-        totalCount: count,
         pageInfo: {
           hasNextPage: last.id !== max.id,
           hasPreviousPage: first.id !== min.id,
