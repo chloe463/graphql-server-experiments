@@ -3,18 +3,15 @@
     [
       "@babel/env",
       {
-        "targets": { "node": "current" },
+        "targets": {
+          "node": "current"
+        },
         "modules": "commonjs"
       }
     ],
     "@babel/preset-typescript"
   ],
-  "plugins": [
-    "@babel/proposal-class-properties",
-    "@babel/proposal-object-rest-spread",
-    "@babel/plugin-proposal-nullish-coalescing-operator",
-    "@babel/plugin-proposal-optional-chaining"
-  ],
+  "plugins": [],
   "sourceMaps": "inline",
   "retainLines": true
 }
