@@ -60,9 +60,9 @@ describe("[Query] questionnaireConnection", () => {
         },
       ]),
       aggregate: jest.fn().mockReturnValue({
-        count: 3,
-        min: { id: 1 },
-        max: { id: 3 },
+        _count: 3,
+        _min: { id: 1 },
+        _max: { id: 3 },
       }),
     };
     const server = constructTestServer({
@@ -70,7 +70,7 @@ describe("[Query] questionnaireConnection", () => {
     });
 
     const { query } = createTestClient(server);
-    const res = await query({ query: GET_QUESTIONNAIRE_CONNECTION, variables : { first: 3, after: "0" }});
+    const res = await query({ query: GET_QUESTIONNAIRE_CONNECTION, variables: { first: 3, after: "0" } });
     expect(res).toMatchSnapshot();
   });
 });
