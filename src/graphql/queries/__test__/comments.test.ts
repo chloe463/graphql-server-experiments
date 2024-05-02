@@ -1,4 +1,4 @@
-import { gql } from "apollo-server";
+import gql from "graphql-tag";
 import { JsonPlaceholderClient } from "../../../api/JsonPlaceholderClient";
 import { constructTestServer } from "../../../testUtils";
 
@@ -57,11 +57,17 @@ describe("[Query] comments", () => {
         }
       ],
     });
-    const server = constructTestServer({
-      jsonPlaceholderClient: jsonPlaceholderClientMock,
-    });
+    const server = constructTestServer();
 
-    const res = await server.executeOperation({ query: GET_COMMENTS_QUERY, variables: { postId: 1 } });
+    const res = await server.executeOperation(
+      {
+        query: GET_COMMENTS_QUERY, variables: { postId: 1 }
+      },
+      {
+        contextValue: {
+          jsonPlaceholderClient: jsonPlaceholderClientMock,
+        }
+      });
     expect(res).toMatchSnapshot();
   });
 });

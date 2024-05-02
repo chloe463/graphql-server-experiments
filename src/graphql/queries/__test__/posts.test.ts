@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { gql } from "apollo-server";
+import gql from "graphql-tag";
 import { constructTestServer } from "../../../testUtils";
 
 const prismaClientMock = (PrismaClient as any) as jest.Mock<PrismaClient>;
@@ -39,11 +39,16 @@ describe("[Query] posts", () => {
         },
       ]),
     };
-    const server = constructTestServer({
-      prismaClient: prismaClientMock,
-    });
+    const server = constructTestServer();
 
-    const res = await server.executeOperation({ query: GET_POST_QUERY, variables: { start: "0", limit: 3 } });
+    const res = await server.executeOperation(
+      { query: GET_POST_QUERY, variables: { start: "0", limit: 3 } },
+      {
+        contextValue: {
+          prismaClient: prismaClientMock,
+        }
+      }
+    );
     expect(res).toMatchSnapshot();
   });
 });

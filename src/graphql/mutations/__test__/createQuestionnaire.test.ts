@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
-import { gql } from "apollo-server";
 import DataLoader from "dataloader";
+import { gql } from "graphql-tag";
 import { constructTestServer } from "../../../testUtils";
 import { NexusGenInputs, NexusGenObjects, NexusGenRootTypes } from "../../generated/typings";
 
@@ -112,16 +112,18 @@ describe("[Mutation] createQuestionnaire", () => {
         { id: 2, text: `Option${id}-2` },
       ];
     };
-    const server = constructTestServer({
-      prismaClient: prismaClientMock,
-      optionsLoader: optionsLoaderMock,
-    });
+    const server = constructTestServer();
 
     const res = await server.executeOperation({
       query: CREATE_QUESTIONNAIRE_MUTATION,
       variables: {
         input: createQuestionnaireInput,
       },
+    }, {
+      contextValue: {
+        prismaClient: prismaClientMock,
+        optionsLoader: optionsLoaderMock,
+      }
     });
     expect(res).toMatchSnapshot();
   });

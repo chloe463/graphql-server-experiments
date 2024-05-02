@@ -2,56 +2,61 @@
 
 exports[`[Mutation] createQuestionnaire can create new questionnaire 1`] = `
 Object {
-  "data": Object {
-    "createQuestionnaire": Object {
-      "questionnaire": Object {
-        "description": "inventore eum sed laboriosam qui repudiandae in eum quidem illo",
-        "endAt": "2021-01-31T14:59:59.000Z",
-        "id": 1,
-        "questions": Array [
-          Object {
+  "body": Object {
+    "kind": "single",
+    "singleResult": Object {
+      "data": Object {
+        "createQuestionnaire": Object {
+          "questionnaire": Object {
+            "description": "inventore eum sed laboriosam qui repudiandae in eum quidem illo",
+            "endAt": "2021-01-31T14:59:59.000Z",
             "id": 1,
-            "options": Array [
+            "questions": Array [
               Object {
                 "id": 1,
-                "text": "Option1-1",
+                "options": Array [
+                  Object {
+                    "id": 1,
+                    "text": "Option1-1",
+                  },
+                  Object {
+                    "id": 2,
+                    "text": "Option1-2",
+                  },
+                ],
+                "text": "Question1",
+                "type": 1,
               },
               Object {
                 "id": 2,
-                "text": "Option1-2",
+                "options": Array [
+                  Object {
+                    "id": 1,
+                    "text": "Option2-1",
+                  },
+                  Object {
+                    "id": 2,
+                    "text": "Option2-2",
+                  },
+                ],
+                "text": "Question2",
+                "type": 2,
               },
             ],
-            "text": "Question1",
-            "type": 1,
+            "startAt": "2020-12-31T15:00:00.000Z",
+            "state": 1,
+            "title": "Test questionnaire",
           },
-          Object {
-            "id": 2,
-            "options": Array [
-              Object {
-                "id": 1,
-                "text": "Option2-1",
-              },
-              Object {
-                "id": 2,
-                "text": "Option2-2",
-              },
-            ],
-            "text": "Question2",
-            "type": 2,
-          },
-        ],
-        "startAt": "2020-12-31T15:00:00.000Z",
-        "state": 1,
-        "title": "Test questionnaire",
+        },
       },
+      "errors": undefined,
     },
   },
-  "errors": undefined,
-  "extensions": undefined,
   "http": Object {
-    "headers": Headers {
-      Symbol(map): Object {},
+    "headers": Map {
+      "cache-control" => "no-store",
     },
+    "status": undefined,
   },
 }
 `;

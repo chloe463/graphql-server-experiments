@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { gql } from "apollo-server";
+import gql from "graphql-tag";
 import { constructTestServer } from "../../../testUtils";
 
 const prismaClientMock = (PrismaClient as any) as jest.Mock<PrismaClient>;
@@ -24,15 +24,17 @@ describe("[Mutation] deleteQuestionnaire", () => {
     (prismaClientMock as any).questionnaire = {
       update: jest.fn().mockReturnValue(true),
     };
-    const server = constructTestServer({
-      prismaClient: prismaClientMock,
-    });
+    const server = constructTestServer();
 
     const res = await server.executeOperation({
       query: DELETE_QUESTIONNAIRE_MUTATION,
       variables: {
         id: 1,
       },
+    }, {
+      contextValue: {
+        prismaClient: prismaClientMock,
+      }
     });
     expect(res).toMatchSnapshot();
   });
