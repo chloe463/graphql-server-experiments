@@ -25,17 +25,17 @@ export const questionnaireConnection = queryField((t) => {
         take: args.first,
       });
 
-      const { count, max, min } = await prismaClient.questionnaire.aggregate({
-        count: true,
+      const { _count: count, _max: max, _min: min } = await prismaClient.questionnaire.aggregate({
+        _count: true,
         where: {
           deleted: {
             equals: false,
           },
         },
-        max: {
+        _max: {
           id: true,
         },
-        min: {
+        _min: {
           id: true,
         }
       });

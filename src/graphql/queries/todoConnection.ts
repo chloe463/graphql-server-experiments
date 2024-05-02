@@ -35,12 +35,12 @@ export const todoConnection = queryField((t) => {
         };
       }
 
-      const { count, max, min } = await prismaClient.todo.aggregate({
-        count: true,
-        max: {
+      const { _count: count, _max: max, _min: min } = await prismaClient.todo.aggregate({
+        _count: true,
+        _max: {
           id: true,
         },
-        min: {
+        _min: {
           id: true,
         },
       });
