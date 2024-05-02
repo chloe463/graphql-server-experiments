@@ -1,5 +1,4 @@
 import { gql } from "apollo-server";
-import { createTestClient } from "apollo-server-testing";
 import { JsonPlaceholderClient } from "../../../api/JsonPlaceholderClient";
 import { constructTestServer } from "../../../testUtils";
 
@@ -57,8 +56,7 @@ describe("[Query] postConnection", () => {
       jsonPlaceholderClient: jsonPlaceholderClientMock,
     });
 
-    const { query } = createTestClient(server);
-    const res = await query({ query: GET_POST_CONNECTION, variables : { first: 3, after: "0" }});
+    const res = await server.executeOperation({ query: GET_POST_CONNECTION, variables: { first: 3, after: "0" } });
     expect(res).toMatchSnapshot();
   });
 });

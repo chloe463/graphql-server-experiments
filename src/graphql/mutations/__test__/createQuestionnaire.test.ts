@@ -1,6 +1,5 @@
 import { PrismaClient } from "@prisma/client";
 import { gql } from "apollo-server";
-import { createTestClient } from "apollo-server-testing";
 import DataLoader from "dataloader";
 import { constructTestServer } from "../../../testUtils";
 import { NexusGenInputs, NexusGenObjects, NexusGenRootTypes } from "../../generated/typings";
@@ -118,9 +117,8 @@ describe("[Mutation] createQuestionnaire", () => {
       optionsLoader: optionsLoaderMock,
     });
 
-    const { mutate } = createTestClient(server);
-    const res = await mutate<CreateQuestionnaireResponse, CreateQuestionnaireVariables>({
-      mutation: CREATE_QUESTIONNAIRE_MUTATION,
+    const res = await server.executeOperation({
+      query: CREATE_QUESTIONNAIRE_MUTATION,
       variables: {
         input: createQuestionnaireInput,
       },

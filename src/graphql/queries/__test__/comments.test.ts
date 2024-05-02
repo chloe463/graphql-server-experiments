@@ -1,5 +1,4 @@
 import { gql } from "apollo-server";
-import { createTestClient } from "apollo-server-testing";
 import { JsonPlaceholderClient } from "../../../api/JsonPlaceholderClient";
 import { constructTestServer } from "../../../testUtils";
 
@@ -18,7 +17,7 @@ const GET_COMMENTS_QUERY = gql`
 `;
 
 describe("[Query] comments", () => {
-  it ("returns comments", async () => {
+  it("returns comments", async () => {
     (jsonPlaceholderClientMock as any).makeDummyComments = jest.fn().mockReturnValue({
       comments: [
         {
@@ -62,8 +61,7 @@ describe("[Query] comments", () => {
       jsonPlaceholderClient: jsonPlaceholderClientMock,
     });
 
-    const { query } = createTestClient(server);
-    const res = await query({ query: GET_COMMENTS_QUERY, variables: { postId: 1 }});
+    const res = await server.executeOperation({ query: GET_COMMENTS_QUERY, variables: { postId: 1 } });
     expect(res).toMatchSnapshot();
   });
 });

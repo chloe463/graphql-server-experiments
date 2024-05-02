@@ -1,6 +1,5 @@
 import { PrismaClient } from "@prisma/client";
 import { gql } from "apollo-server";
-import { createTestClient } from "apollo-server-testing";
 import { constructTestServer } from "../../../testUtils";
 
 const prismaClientMock = (PrismaClient as any) as jest.Mock<PrismaClient>;
@@ -29,9 +28,8 @@ describe("[Mutation] deleteQuestionnaire", () => {
       prismaClient: prismaClientMock,
     });
 
-    const { mutate } = createTestClient(server);
-    const res = await mutate<DeleteQuestionnaireResponse, DeleteQuestionnaireVariables>({
-      mutation: DELETE_QUESTIONNAIRE_MUTATION,
+    const res = await server.executeOperation({
+      query: DELETE_QUESTIONNAIRE_MUTATION,
       variables: {
         id: 1,
       },
