@@ -1,44 +1,51 @@
-name: Main
+name: CI
 
 on: [push]
 
 jobs:
-  build:
+  # lint:
+  #   runs-on: ubuntu-latest
+
+  #   steps:
+  #   - uses: actions/checkout@v4
+  #   - uses: actions/setup-node@v4
+  #     with:
+  #       node-version-file: ".node-version"
+  #       cache: "yarn"
+  #   - uses: bahmutov/npm-install@v1
+  #   - name: Install dependencies
+  #     run: yarn install
+  #   - name: Lint
+  #     run: yarn lint
+
+  test:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node: [14]
-
     steps:
-    - uses: actions/checkout@v2
-
-    - name: Get yarn cache directory path
-      id: yarn-cache-dir-path
-      run: echo "::set-output name=dir::$(yarn cache dir)"
-
-    - name: Cache node modules
-      uses: actions/cache@v2
-      env:
-        cache-version: ${{ secrets.CACHE_VERSION }}
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+    - uses: actions/setup-node@v4
       with:
-        path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-        key: ${{ runner.os }}-pkg-cache-${{ hashFiles('**/yarn.lock') }}-${{ env.cache-version }}
-        restore-keys: |
-          ${{ runner.os }}-pkg-cache-${{ hashFiles('**/yarn.lock') }}-
-          ${{ runner.os }}-pkg-cache
-
+        node-version-file: ".node-version"
+        cache: "yarn"
+    - uses: bahmutov/npm-install@v1
     - name: Install dependencies
       run: yarn install
-
-    # - name: Lint
-    #   run: yarn lint
-
     - name: Test package
       run: yarn test
 
+  typecheck:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version-file: ".node-version"
+        cache: "yarn"
+    - uses: bahmutov/npm-install@v1
+    - name: Install dependencies
+      run: yarn install
     - name: Type check
       run: yarn type-check
-
-    # - name: Package building test
-    #   run: yarn build

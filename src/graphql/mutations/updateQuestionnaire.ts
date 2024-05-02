@@ -46,8 +46,15 @@ const buildUpdateParams = (questionnaire: NexusGenInputs["UpdateQuestionnaireInp
         };
       }),
       create: questionnaire.questions.filter(validateCreateQuestion).map((q) => {
-        return q;
-      })
+        return {
+          text: q.text,
+          type: q.type,
+          required: q.required,
+          options: {
+            create: q.options.filter(validateCreateOption),
+          }
+        }
+      }),
     }
   };
 }
