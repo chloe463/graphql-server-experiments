@@ -11,7 +11,13 @@ export const postConnection = queryField((t) => {
       output: true,
     },
     extendConnection: (t) => {
-      t.int("totalCount");
+      t.int("totalCount", {
+        resolve: async (_root, args, context) => {
+          const { jsonPlaceholderClient } = context;
+          const { totalCount } = jsonPlaceholderClient.makeDummyPosts({});
+          return Number(totalCount);
+        }
+      });
     },
     resolve: async (_root, args, context) => {
       const { jsonPlaceholderClient } = context;
