@@ -1,5 +1,5 @@
 import { objectType } from "nexus";
-import { Todo } from "./Todo";
+import { Todo } from "./Todo.js";
 
 export const CreateTodoPayload = objectType({
   name: "CreateTodoPayload",

@@ -3,9 +3,9 @@ import { expressMiddleware } from "@apollo/server/express4";
 import cors from "cors";
 import express from "express";
 import morgan from "morgan";
-import { createContext } from "./context";
-import { schema } from "./graphql/schema";
-import todos from "./todos";
+import { createContext } from "./context.js";
+import { schema } from "./graphql/schema.js";
+import todos from "./todos.js";
 
 const HOST = process.env.HOST || "localhost";
 const PORT = parseInt(process.env.PORT, 10) || 4000;

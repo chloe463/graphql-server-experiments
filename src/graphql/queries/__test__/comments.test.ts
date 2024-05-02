@@ -1,6 +1,6 @@
-import gql from "graphql-tag";
-import { JsonPlaceholderClient } from "../../../api/JsonPlaceholderClient";
-import { constructTestServer } from "../../../testUtils";
+import { gql } from "graphql-tag";
+import { JsonPlaceholderClient } from "../../../api/JsonPlaceholderClient.js";
+import { constructTestServer } from "../../../testUtils.js";
 
 const jsonPlaceholderClientMock = (JsonPlaceholderClient as any) as jest.Mock<JsonPlaceholderClient>;
 

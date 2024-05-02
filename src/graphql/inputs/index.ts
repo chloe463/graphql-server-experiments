@@ -1,5 +1,6 @@
-export * from "./CreateQuestionnaireInput";
-export * from "./CreateTodoInput";
-export * from "./DeleteQuestionnaireInput";
-export * from "./UpdateQuestionnaireInput";
-export * from "./updateTodoInput";
+export * from "./CreateQuestionnaireInput.js";
+export * from "./CreateTodoInput.js";
+export * from "./DeleteQuestionnaireInput.js";
+export * from "./UpdateQuestionnaireInput.js";
+export * from "./updateTodoInput.js";
+

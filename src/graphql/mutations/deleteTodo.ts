@@ -1,5 +1,5 @@
-import { arg, intArg, mutationField, nonNull } from "nexus";
-import { DeleteTodoPayload } from "../types";
+import { arg, mutationField, nonNull } from "nexus";
+import { DeleteTodoPayload } from "../types/DeleteTodoPayload.js";
 
 export const deleteTodo = mutationField("deleteTodo", {
   type: DeleteTodoPayload,

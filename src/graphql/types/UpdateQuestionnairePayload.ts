@@ -1,5 +1,5 @@
 import { objectType } from "nexus";
-import { Questionnaire } from "./Questionnaire";
+import { Questionnaire } from "./Questionnaire.js";
 
 export const updateQuestionnairePayload = objectType({
   name: "UpdateQuestionnairePayload",

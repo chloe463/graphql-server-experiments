@@ -1,8 +1,8 @@
 import { Prisma } from "@prisma/client";
 import { arg, mutationField, nonNull } from "nexus";
-import { NexusGenInputs } from "../generated/typings";
-import { updateQuestionnaireInput } from "../inputs";
-import { updateQuestionnairePayload } from "../types";
+import { NexusGenInputs } from "../generated/typings.js";
+import { updateQuestionnaireInput } from "../inputs/UpdateQuestionnaireInput.js";
+import { updateQuestionnairePayload } from "../types/UpdateQuestionnairePayload.js";
 
 type UpdateQuestionnaireParam = Prisma.QuestionnaireUpdateArgs["data"];
 type CreateQuestionInput = Required<Omit<NexusGenInputs["UpdateQuestionInput"], "id">>;

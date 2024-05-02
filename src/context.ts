@@ -1,7 +1,7 @@
 import { ExpressMiddlewareOptions } from "@apollo/server/express4";
 import { PrismaClient } from "@prisma/client";
-import { JsonPlaceholderClient } from "./api/JsonPlaceholderClient";
-import { optionsLoaderFactory } from "./graphql/loaders";
+import { JsonPlaceholderClient } from "./api/JsonPlaceholderClient.js";
+import { optionsLoaderFactory } from "./graphql/loaders/index.js";
 
 export type Context = {
   jsonPlaceholderClient: JsonPlaceholderClient,

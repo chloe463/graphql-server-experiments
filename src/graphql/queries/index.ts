@@ -1,8 +1,8 @@
-export * from "./comments";
-export * from "./postConnection";
-export * from "./posts";
-export * from "./questionnaire";
-export * from "./questionnaireConnection";
-export * from "./questionnaires";
-export * from "./todoConnection";
+export * from "./comments.js";
+export * from "./postConnection.js";
+export * from "./posts.js";
+export * from "./questionnaire.js";
+export * from "./questionnaireConnection.js";
+export * from "./questionnaires.js";
+export * from "./todoConnection.js";
 

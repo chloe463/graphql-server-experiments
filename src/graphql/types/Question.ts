@@ -1,5 +1,5 @@
 import { objectType } from "nexus";
-import { Option } from "./Option";
+import { Option } from "./Option.js";
 
 export const Question = objectType({
   name: "Question",

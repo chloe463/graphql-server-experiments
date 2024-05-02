@@ -1,6 +1,6 @@
 import axios, { AxiosInstance } from "axios";
 import faker from "faker";
-import { NexusGenObjects } from "../graphql/generated/typings";
+import { NexusGenObjects } from "../graphql/generated/typings.js";
 
 type Post = NexusGenObjects["Post"];
 type Comment = NexusGenObjects["Comment"];

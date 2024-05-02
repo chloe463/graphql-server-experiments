@@ -1,6 +1,6 @@
 import { arg, mutationField } from "nexus";
-import { createQuestionnaireInput } from "../inputs";
-import { createQuestionnairePayload } from "../types";
+import { createQuestionnaireInput } from "../inputs/CreateQuestionnaireInput.js";
+import { createQuestionnairePayload } from "../types/CreateQuestionnairePayload.js";
 
 export const createQuestionnaire = mutationField("createQuestionnaire", {
   type: createQuestionnairePayload,

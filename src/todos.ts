@@ -1,7 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 import express from "express";
-import { ValidationError } from "./errors";
+import { ValidationError } from "./errors/index.js";
 const router = express.Router();
 
 const prismaClient = new PrismaClient({

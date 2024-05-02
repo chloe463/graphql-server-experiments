@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
-import gql from "graphql-tag";
-import { constructTestServer } from "../../../testUtils";
+import { gql } from "graphql-tag";
+import { constructTestServer } from "../../../testUtils.js";
 
 const prismaClientMock = (PrismaClient as any) as jest.Mock<PrismaClient>;
 

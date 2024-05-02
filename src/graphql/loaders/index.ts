@@ -1,1 +1,1 @@
-export * from "./optionsLoader";
+export * from "./optionsLoader.js";

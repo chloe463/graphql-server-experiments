@@ -1,8 +1,8 @@
 import { PrismaClient } from "@prisma/client";
 import DataLoader from "dataloader";
 import { gql } from "graphql-tag";
-import { constructTestServer } from "../../../testUtils";
-import { NexusGenInputs, NexusGenObjects, NexusGenRootTypes } from "../../generated/typings";
+import { constructTestServer } from "../../../testUtils.js";
+import { NexusGenInputs, NexusGenObjects, NexusGenRootTypes } from "../../generated/typings.js";
 
 const prismaClientMock = (PrismaClient as any) as jest.Mock<PrismaClient>;
 const optionsLoaderMock = (DataLoader as any) as jest.Mock<DataLoader<number, any, number>>

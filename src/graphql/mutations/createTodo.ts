@@ -1,6 +1,6 @@
 import { arg, mutationField } from "nexus";
-import { CreateTodoInput } from "../inputs";
-import { CreateTodoPayload } from "../types";
+import { CreateTodoInput } from "../inputs/CreateTodoInput.js";
+import { CreateTodoPayload } from "../types/CreateTodoPayload.js";
 
 export const createTodo = mutationField("createTodo", {
   type: CreateTodoPayload,

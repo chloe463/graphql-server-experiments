@@ -1,5 +1,5 @@
 import { queryField } from "nexus";
-import { Todo } from "../types";
+import { Todo } from "../types/Todo.js";
 
 export const todoConnection = queryField((t) => {
   t.connectionField("todoConnection", {

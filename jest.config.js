@@ -1,4 +1,16 @@
-module.exports = {
+// module.exports = {
+//   verbose: true,
+//   moduleFileExtensions: [
+//     "ts",
+//     "js"
+//   ],
+//   transform: {
+//     "^.+\\.ts$": "@swc/jest",
+//     "^.+\\.graphql$": "<rootDir>/scripts/graphql-schema-transformer.js",
+//   }
+// };
+
+export default {
   verbose: true,
   moduleFileExtensions: [
     "ts",
@@ -6,6 +18,6 @@ module.exports = {
   ],
   transform: {
     "^.+\\.ts$": "@swc/jest",
-    "^.+\\.graphql$": "<rootDir>/scripts/graphql-schema-transformer.js",
+    // "^.+\\.graphql$": "<rootDir>/scripts/graphql-schema-transformer.js",
   }
 };

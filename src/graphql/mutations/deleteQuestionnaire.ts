@@ -1,5 +1,6 @@
 import { intArg, mutationField, nonNull } from "nexus";
-import { CancelToDeleteQuestionnairePayload, DeleteQuestionnairePayload } from "../types";
+import { CancelToDeleteQuestionnairePayload } from "../types/CancelToDeleteQuestionnairePayload.js";
+import { DeleteQuestionnairePayload } from "../types/DeleteQuestionnairePayload.js";
 
 export const deleteQuestionnaire = mutationField("deleteQuestionnaire", {
   type: DeleteQuestionnairePayload,
