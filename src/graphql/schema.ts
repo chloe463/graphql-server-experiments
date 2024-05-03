@@ -5,6 +5,12 @@ import * as mutations from "./mutations";
 import * as queries from "./queries";
 import * as types from "./types";
 
+type ContextType = Parameters<typeof makeSchema>[0]["contextType"];
+const contextType: ContextType | undefined = process.env.NODE_ENV === "development" ? {
+  module: path.join(__dirname, "/../context.ts"),
+  export: "Context",
+} : undefined;
+
 export const schema = makeSchema({
   types: [
     ...Object.values(types),
@@ -16,10 +22,7 @@ export const schema = makeSchema({
     typegen: path.join(__dirname, "/generated/typings.ts"),
     schema: path.join(__dirname, "/generated/schema.graphql"),
   },
-  contextType: {
-    module: path.join(__dirname, "/../context.ts"),
-    export: "Context",
-  },
+  contextType,
   plugins: [connectionPlugin()],
 });
 

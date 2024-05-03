@@ -3,18 +3,36 @@
   "jsc": {
     "parser": {
       "syntax": "typescript",
-      "tsx": false
+      "tsx": false,
+      "decorators": false,
+      "dynamicImport": true
     },
     "target": "es2022",
     "loose": false,
     "minify": {
       "compress": false,
       "mangle": false
-    }
+    },
+    "externalHelpers": false,
+    "transform": {
+      "legacyDecorator": true,
+      "decoratorMetadata": false,
+      "react": {
+        "throwIfNamespace": false,
+        "useBuiltins": false,
+        "pragma": "React.createElement",
+        "pragmaFrag": "React.Fragment",
+        "importSource": "react"
+      }
+    },
+    "keepClassNames": true
   },
   "module": {
-    "type": "commonjs"
+    "type": "commonjs",
+    "strictMode": true,
+    "noInterop": false
   },
   "minify": false,
-  "isModule": true
+  "isModule": true,
+  "sourceMaps": "inline"
 }

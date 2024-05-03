@@ -140,3 +140,6 @@ dev.db
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# artifact
+build

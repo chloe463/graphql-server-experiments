@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "NODE_ENV=development SWCRC=true node -r @swc-node/register src/index.ts",
     "test": "TZ=Asia/Tokyo jest --maxWorkers=50%",
-    "type-check": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "tsconfig-to-swcrc": "tsconfig-to-swcconfig",
+    "build": "yarn swc ./src -d ./build --ignore src/**/*.test.ts",
+    "start": "NODE_ENV=production node build/src/index.js"
   },
   "prisma": {
     "seed": "node -r @swc-node/register prisma/seed.ts"
@@ -37,6 +40,7 @@
     "jest": "^26.6.3",
     "nodemon": "^2.0.7",
     "prisma": "^5.0.0",
+    "tsconfig-to-swcconfig": "^2.7.0",
     "typescript": "^5.0.0"
   },
   "packageManager": "yarn@4.1.1"
