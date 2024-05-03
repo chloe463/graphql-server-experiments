@@ -28,6 +28,7 @@ jobs:
         node-version-file: ".node-version"
         cache: "yarn"
     - uses: bahmutov/npm-install@v1
+    - run: yarn info --cache
     - name: Test package
       run: yarn test
 
