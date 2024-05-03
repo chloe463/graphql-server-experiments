@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "NODE_ENV=development SWCRC=true node -r @swc-node/register src/index.ts",
     "test": "TZ=Asia/Tokyo jest --maxWorkers=50%",
-    "type-check": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
     "build": "yarn swc ./src -d ./build --ignore src/**/*.test.ts",
     "start": "NODE_ENV=production node build/src/index.js"
   },
