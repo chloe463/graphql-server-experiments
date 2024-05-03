@@ -24,7 +24,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
-    - uses: actions/setup-node@v4
       with:
         node-version-file: ".node-version"
         cache: "yarn"
@@ -38,10 +37,22 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
-    - uses: actions/setup-node@v4
       with:
         node-version-file: ".node-version"
         cache: "yarn"
     - uses: bahmutov/npm-install@v1
     - name: Type check
       run: yarn type-check
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version-file: ".node-version"
+        cache: "yarn"
+    - uses: bahmutov/npm-install@v1
+    - name: Build app
+      run: yarn build
