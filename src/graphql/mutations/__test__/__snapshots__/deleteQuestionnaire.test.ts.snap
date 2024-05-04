@@ -1,22 +1,24 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Bun Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`[Mutation] deleteQuestionnaire can soft delete questionnaire 1`] = `
-Object {
-  "body": Object {
+{
+  "body": {
     "kind": "single",
-    "singleResult": Object {
-      "data": Object {
-        "deleteQuestionnaire": Object {
+    "singleResult": {
+      "data": {
+        "deleteQuestionnaire": {
           "result": true,
         },
       },
       "errors": undefined,
     },
   },
-  "http": Object {
-    "headers": Map {
+  "http": {
+    "headers": 
+Map {
       "cache-control" => "no-store",
-    },
+    }
+,
     "status": undefined,
   },
 }

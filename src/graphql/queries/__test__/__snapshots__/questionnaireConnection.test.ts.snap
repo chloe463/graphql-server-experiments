@@ -1,16 +1,16 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Bun Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`[Query] questionnaireConnection returns questionnaire list 1`] = `
-Object {
-  "body": Object {
+{
+  "body": {
     "kind": "single",
-    "singleResult": Object {
-      "data": Object {
-        "questionnaireConnection": Object {
-          "edges": Array [
-            Object {
+    "singleResult": {
+      "data": {
+        "questionnaireConnection": {
+          "edges": [
+            {
               "cursor": "1",
-              "node": Object {
+              "node": {
                 "description": "ab accusantium ipsam voluptatibus vero voluptatum beatae et sed eum harum eveniet et fugiat deleniti laborum dolor ea perferendis ea eligendi molestias possimus molestiae quae et aspernatur et aut omnis",
                 "endAt": "2021-06-29T15:00:00.000Z",
                 "id": 1,
@@ -19,9 +19,9 @@ Object {
                 "title": "Questionnaire.1",
               },
             },
-            Object {
+            {
               "cursor": "2",
-              "node": Object {
+              "node": {
                 "description": "voluptatibus magni et nesciunt quo commodi beatae ea error qui fugit minus nostrum dolores eaque quidem beatae error necessitatibus consequatur quibusdam sunt molestiae aut nulla dolor ad alias neque corrupti",
                 "endAt": "2021-06-29T15:00:00.000Z",
                 "id": 2,
@@ -30,9 +30,9 @@ Object {
                 "title": "Questionnaire.2",
               },
             },
-            Object {
+            {
               "cursor": "3",
-              "node": Object {
+              "node": {
                 "description": "optio maiores similique dolorem aut voluptatem autem voluptatem ipsum exercitationem nihil voluptatem nemo illo quis in ut rerum et ad esse ipsa quae esse voluptas perspiciatis aspernatur possimus ut dolorem",
                 "endAt": "2021-06-29T15:00:00.000Z",
                 "id": 3,
@@ -42,7 +42,7 @@ Object {
               },
             },
           ],
-          "pageInfo": Object {
+          "pageInfo": {
             "endCursor": "3",
             "hasNextPage": false,
             "hasPreviousPage": false,
@@ -54,10 +54,12 @@ Object {
       "errors": undefined,
     },
   },
-  "http": Object {
-    "headers": Map {
+  "http": {
+    "headers": 
+Map {
       "cache-control" => "no-store",
-    },
+    }
+,
     "status": undefined,
   },
 }
