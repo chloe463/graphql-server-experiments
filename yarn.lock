@@ -1482,6 +1482,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/bun@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "@types/bun@npm:1.1.1"
+  dependencies:
+    bun-types: "npm:1.1.6"
+  checksum: 10c0/855433da8b1d448fdb6b121a201d74106a59f6786c4896d0fa9a2569bf0428f99bbd7fa7f1c05bdc46a205ea783d27aad776a3a357f851a3528ab32e8601792d
+  languageName: node
+  linkType: hard
+
 "@types/cacheable-request@npm:^6.0.1":
   version: 6.0.3
   resolution: "@types/cacheable-request@npm:6.0.3"
@@ -1650,6 +1659,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node@npm:~20.11.3":
+  version: 20.11.30
+  resolution: "@types/node@npm:20.11.30"
+  dependencies:
+    undici-types: "npm:~5.26.4"
+  checksum: 10c0/867cfaf969c6d8850d8d7304e7ab739898a50ecb1395b61ff2335644f5f48d7a46fbc4a14cee967aed65ec134b61a746edae70d1f32f11321ccf29165e3bc4e6
+  languageName: node
+  linkType: hard
+
 "@types/normalize-package-data@npm:^2.4.0":
   version: 2.4.4
   resolution: "@types/normalize-package-data@npm:2.4.4"
@@ -1712,6 +1730,15 @@ __metadata:
   version: 2.0.3
   resolution: "@types/stack-utils@npm:2.0.3"
   checksum: 10c0/1f4658385ae936330581bcb8aa3a066df03867d90281cdf89cc356d404bd6579be0f11902304e1f775d92df22c6dd761d4451c804b0a4fba973e06211e9bd77c
+  languageName: node
+  linkType: hard
+
+"@types/ws@npm:~8.5.10":
+  version: 8.5.10
+  resolution: "@types/ws@npm:8.5.10"
+  dependencies:
+    "@types/node": "npm:*"
+  checksum: 10c0/e9af279b984c4a04ab53295a40aa95c3e9685f04888df5c6920860d1dd073fcc57c7bd33578a04b285b2c655a0b52258d34bee0a20569dca8defb8393e1e5d29
   languageName: node
   linkType: hard
 
@@ -2240,6 +2267,16 @@ __metadata:
   version: 1.1.2
   resolution: "buffer-from@npm:1.1.2"
   checksum: 10c0/124fff9d66d691a86d3b062eff4663fe437a9d9ee4b47b1b9e97f5a5d14f6d5399345db80f796827be7c95e70a8e765dd404b7c3ff3b3324f98e9b0c8826cc34
+  languageName: node
+  linkType: hard
+
+"bun-types@npm:1.1.6":
+  version: 1.1.6
+  resolution: "bun-types@npm:1.1.6"
+  dependencies:
+    "@types/node": "npm:~20.11.3"
+    "@types/ws": "npm:~8.5.10"
+  checksum: 10c0/dae94fd68f432bb10af029202e004681fab0b96df8946556984a1c3012b31b3aa37b422325a51363a3eee34f100126311ae11b98f1599331afdb70a185e1229b
   languageName: node
   linkType: hard
 
@@ -3690,6 +3727,7 @@ __metadata:
     "@swc/cli": "npm:^0.3.12"
     "@swc/core": "npm:^1.4.17"
     "@swc/jest": "npm:^0.2.36"
+    "@types/bun": "npm:^1.1.1"
     "@types/faker": "npm:^5.5.3"
     "@types/jest": "npm:^26.0.22"
     "@types/lodash": "npm:^4.14.149"
