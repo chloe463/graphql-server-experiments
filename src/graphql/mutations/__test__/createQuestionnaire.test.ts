@@ -1,11 +1,12 @@
 import { PrismaClient } from "@prisma/client";
+import { describe, expect, it, jest } from "bun:test";
 import DataLoader from "dataloader";
 import { gql } from "graphql-tag";
 import { constructTestServer } from "../../../testUtils";
 import { NexusGenInputs, NexusGenObjects, NexusGenRootTypes } from "../../generated/typings";
 
-const prismaClientMock = (PrismaClient as any) as jest.Mock<PrismaClient>;
-const optionsLoaderMock = (DataLoader as any) as jest.Mock<DataLoader<number, any, number>>
+const prismaClientMock = new PrismaClient();
+const optionsLoaderMock = new DataLoader(() => void 0);
 
 type CreateQuestionnaireInput = NexusGenInputs["CreateQuestionnaireInput"];
 type CreateQuestionnaireVariables = {
