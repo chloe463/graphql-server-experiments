@@ -6,7 +6,8 @@ import * as queries from "./queries";
 import * as types from "./types";
 
 type ContextType = Parameters<typeof makeSchema>[0]["contextType"];
-const contextType: ContextType | undefined = process.env.NODE_ENV === "development" ? {
+
+const contextType: ContextType | undefined = ["development", "test"].includes(process.env.NODE_ENV) ? {
   module: path.join(__dirname, "/../context.ts"),
   export: "Context",
 } : undefined;
