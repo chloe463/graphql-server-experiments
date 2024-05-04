@@ -42,7 +42,7 @@ jobs:
         bun-version: latest
     - run: bun install --frozen-lockfile
     - name: Type check
-      run: yarn typecheck
+      run: bun run typecheck
 
   build:
     runs-on: ubuntu-latest
@@ -54,4 +54,4 @@ jobs:
         bun-version: latest
     - run: bun install --frozen-lockfile
     - name: Build app
-      run: yarn build
+      run: bun run build
