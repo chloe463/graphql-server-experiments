@@ -28,7 +28,9 @@ jobs:
         bun-version: latest
     - run: bun install --frozen-lockfile
     - name: Test package
-      run: bun test
+      run: |
+        bun prisma generate
+        bun test
 
   typecheck:
     runs-on: ubuntu-latest

@@ -4,7 +4,6 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "postinstall": "bun prisma generate",
     "dev": "NODE_ENV=development SWCRC=true node -r @swc-node/register src/index.ts",
     "test": "TZ=Asia/Tokyo jest --maxWorkers=50%",
     "typecheck": "tsc --noEmit",
