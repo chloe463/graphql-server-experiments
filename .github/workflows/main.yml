@@ -23,13 +23,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
+    - uses: oven-sh/setup-bun@v1
       with:
-        node-version-file: ".node-version"
-        cache: "yarn"
-    - uses: bahmutov/npm-install@v1
+        bun-version: latest
+    - run: bun install --frozen-lockfil
     - name: Test package
-      run: yarn test
+      run: bun test
 
   typecheck:
     runs-on: ubuntu-latest
