@@ -1,25 +1,25 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Bun Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`[Mutation] updateQuestionnaire can update existing questionnaire 1`] = `
-Object {
-  "body": Object {
+{
+  "body": {
     "kind": "single",
-    "singleResult": Object {
-      "data": Object {
-        "updateQuestionnaire": Object {
-          "questionnaire": Object {
+    "singleResult": {
+      "data": {
+        "updateQuestionnaire": {
+          "questionnaire": {
             "description": "inventore eum sed laboriosam qui repudiandae in eum quidem illo",
-            "endAt": "2021-01-31T14:59:59.000Z",
+            "endAt": "2021-01-31T23:59:59.000Z",
             "id": 1,
-            "questions": Array [
-              Object {
+            "questions": [
+              {
                 "id": 1,
-                "options": Array [
-                  Object {
+                "options": [
+                  {
                     "id": 1,
                     "text": "Option1-1",
                   },
-                  Object {
+                  {
                     "id": 2,
                     "text": "Option1-2",
                   },
@@ -27,14 +27,14 @@ Object {
                 "text": "Question1",
                 "type": 1,
               },
-              Object {
+              {
                 "id": 2,
-                "options": Array [
-                  Object {
+                "options": [
+                  {
                     "id": 1,
                     "text": "Option2-1",
                   },
-                  Object {
+                  {
                     "id": 2,
                     "text": "Option2-2",
                   },
@@ -43,7 +43,7 @@ Object {
                 "type": 2,
               },
             ],
-            "startAt": "2020-12-31T15:00:00.000Z",
+            "startAt": "2021-01-01T00:00:00.000Z",
             "state": 1,
             "title": "Test questionnaire",
           },
@@ -52,10 +52,12 @@ Object {
       "errors": undefined,
     },
   },
-  "http": Object {
-    "headers": Map {
+  "http": {
+    "headers": 
+Map {
       "cache-control" => "no-store",
-    },
+    }
+,
     "status": undefined,
   },
 }

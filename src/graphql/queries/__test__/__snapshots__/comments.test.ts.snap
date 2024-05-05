@@ -1,57 +1,67 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Bun Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`[Query] comments returns comments 1`] = `
-Object {
-  "body": Object {
+{
+  "body": {
     "kind": "single",
-    "singleResult": Object {
-      "data": Object {
-        "comments": Array [
-          Object {
-            "body": "laudantium enim quasi est quidem magnam voluptate ipsam eos
+    "singleResult": {
+      "data": {
+        "comments": [
+          {
+            "body": 
+"laudantium enim quasi est quidem magnam voluptate ipsam eos
 tempora quo necessitatibus
 dolor quam autem quasi
-reiciendis et nam sapiente accusantium",
+reiciendis et nam sapiente accusantium"
+,
             "email": "Eliseo@gardner.biz",
             "id": 1,
             "name": "id labore ex et quam laborum",
             "postId": 1,
           },
-          Object {
-            "body": "est natus enim nihil est dolore omnis voluptatem numquam
+          {
+            "body": 
+"est natus enim nihil est dolore omnis voluptatem numquam
 et omnis occaecati quod ullam at
 voluptatem error expedita pariatur
-nihil sint nostrum voluptatem reiciendis et",
+nihil sint nostrum voluptatem reiciendis et"
+,
             "email": "Jayne_Kuhic@sydney.com",
             "id": 2,
             "name": "quo vero reiciendis velit similique earum",
             "postId": 1,
           },
-          Object {
-            "body": "quia molestiae reprehenderit quasi aspernatur
+          {
+            "body": 
+"quia molestiae reprehenderit quasi aspernatur
 aut expedita occaecati aliquam eveniet laudantium
 omnis quibusdam delectus saepe quia accusamus maiores nam est
-cum et ducimus et vero voluptates excepturi deleniti ratione",
+cum et ducimus et vero voluptates excepturi deleniti ratione"
+,
             "email": "Nikita@garfield.biz",
             "id": 3,
             "name": "odio adipisci rerum aut animi",
             "postId": 1,
           },
-          Object {
-            "body": "non et atque
+          {
+            "body": 
+"non et atque
 occaecati deserunt quas accusantium unde odit nobis qui voluptatem
 quia voluptas consequuntur itaque dolor
-et qui rerum deleniti ut occaecati",
+et qui rerum deleniti ut occaecati"
+,
             "email": "Lew@alysha.tv",
             "id": 4,
             "name": "alias odio sit",
             "postId": 1,
           },
-          Object {
-            "body": "harum non quasi et ratione
+          {
+            "body": 
+"harum non quasi et ratione
 tempore iure ex voluptates in ratione
 harum architecto fugit inventore cupiditate
-voluptates magni quo et",
+voluptates magni quo et"
+,
             "email": "Hayden@althea.biz",
             "id": 5,
             "name": "vero eaque aliquid doloribus et culpa",
@@ -62,10 +72,12 @@ voluptates magni quo et",
       "errors": undefined,
     },
   },
-  "http": Object {
-    "headers": Map {
+  "http": {
+    "headers": 
+Map {
       "cache-control" => "no-store",
-    },
+    }
+,
     "status": undefined,
   },
 }

@@ -2,7 +2,7 @@ import { PrismaClient } from "@prisma/client";
 import faker from "faker";
 const prisma = new PrismaClient();
 
-const createPosts = async () =>{
+const createPosts = async () => {
   const posts = Array.from({ length: 100 }, (_, i) => i + 1).map((i: number) => {
     return {
       title: faker.lorem.word(10),
@@ -66,11 +66,11 @@ async function main() {
   await createQuestionnares();
 };
 
-main()
-  .catch(e => {
-    console.error(e);
-    process.exit(1);
-  })
-  .finally(async () => {
-    await prisma.$disconnect();
-  });
+try {
+  await main();
+} catch (e) {
+  console.error(e);
+  process.exit(1);
+} finally {
+  await prisma.$disconnect();
+}

@@ -1,8 +1,9 @@
+import { describe, expect, it, jest } from "bun:test";
 import gql from "graphql-tag";
 import { JsonPlaceholderClient } from "../../../api/JsonPlaceholderClient";
 import { constructTestServer } from "../../../testUtils";
 
-const jsonPlaceholderClientMock = (JsonPlaceholderClient as any) as jest.Mock<JsonPlaceholderClient>;
+const jsonPlaceholderClientMock = new JsonPlaceholderClient();
 
 const GET_POST_CONNECTION = gql`
   query GetPostConnectionQuery($first: Int, $after: String) {

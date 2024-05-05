@@ -23,36 +23,35 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
+    - uses: oven-sh/setup-bun@v1
       with:
-        node-version-file: ".node-version"
-        cache: "yarn"
-    - uses: bahmutov/npm-install@v1
+        bun-version: latest
+    - run: bun install --frozen-lockfile
     - name: Test package
-      run: yarn test
+      run: |
+        bun prisma generate
+        bun test
 
   typecheck:
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
+    - uses: oven-sh/setup-bun@v1
       with:
-        node-version-file: ".node-version"
-        cache: "yarn"
-    - uses: bahmutov/npm-install@v1
+        bun-version: latest
+    - run: bun install --frozen-lockfile
     - name: Type check
-      run: yarn typecheck
+      run: bun run typecheck
 
   build:
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
+    - uses: oven-sh/setup-bun@v1
       with:
-        node-version-file: ".node-version"
-        cache: "yarn"
-    - uses: bahmutov/npm-install@v1
+        bun-version: latest
+    - run: bun install --frozen-lockfile
     - name: Build app
-      run: yarn build
+      run: bun run build

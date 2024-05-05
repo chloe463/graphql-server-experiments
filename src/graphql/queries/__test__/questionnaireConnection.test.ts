@@ -1,8 +1,9 @@
+import { describe, expect, it, jest } from "bun:test";
 import { PrismaClient } from "@prisma/client";
 import gql from "graphql-tag";
 import { constructTestServer } from "../../../testUtils";
 
-const prismaClientMock = (PrismaClient as any) as jest.Mock<PrismaClient>;
+const prismaClientMock = new PrismaClient();
 
 const GET_QUESTIONNAIRE_CONNECTION = gql`
   query GetQuestionnaireConnection($first: Int, $after: String) {
