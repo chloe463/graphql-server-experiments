@@ -1,6 +1,6 @@
 import { Prisma } from "@prisma/client";
 import { arg, mutationField, nonNull } from "nexus";
-import { NexusGenInputs } from "../generated/typings";
+import type { NexusGenInputs } from "../generated/typings";
 import { updateQuestionnaireInput } from "../inputs";
 import { updateQuestionnairePayload } from "../types";
 

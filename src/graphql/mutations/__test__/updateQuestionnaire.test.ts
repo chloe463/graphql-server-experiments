@@ -3,7 +3,7 @@ import { describe, expect, it, jest } from "bun:test";
 import DataLoader from "dataloader";
 import gql from "graphql-tag";
 import { constructTestServer } from "../../../testUtils";
-import { NexusGenInputs, NexusGenObjects, NexusGenRootTypes } from "../../generated/typings";
+import type { NexusGenInputs, NexusGenObjects, NexusGenRootTypes } from "../../generated/typings";
 
 const prismaClientMock = new PrismaClient();
 const optionsLoaderMock = new DataLoader(() => void 0);

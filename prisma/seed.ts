@@ -11,7 +11,7 @@ const createPosts = async () => {
     };
   });
   for (const post of posts) {
-    const res = await prisma.post.create({
+    const _res = await prisma.post.create({
       data: post,
     });
   }
