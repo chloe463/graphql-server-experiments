@@ -1,19 +1,23 @@
 {
   "compilerOptions": {
-    "target": "es2022",
-    "module": "CommonJS",
-    "typeRoots": [
-      "node_modules/@types",
-      "src/@types"
+    // Enable latest features
+    "lib": [
+      "ESNext"
     ],
-    "esModuleInterop": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleDetection": "force",
+    "allowJs": true,
+    // Bundler mode
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "noEmit": true,
+    // Best practices
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
-  },
-  "include": [
-    "src"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+    "noFallthroughCasesInSwitch": true,
+    // Some stricter flags
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
+  }
 }

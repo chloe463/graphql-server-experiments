@@ -26,17 +26,15 @@ const corsOptions: cors.CorsOptions = {
 };
 app.use("/todos", cors(corsOptions), todos);
 
-(async () => {
-  await apolloServer.start();
-  app.use(
-    "/graphql",
-    cors<cors.CorsRequest>(corsOptions),
-    express.json(),
-    expressMiddleware(apolloServer, {
-      context: createContext,
-    }),
-  );
-})();
+await apolloServer.start();
+app.use(
+  "/graphql",
+  cors<cors.CorsRequest>(corsOptions),
+  express.json(),
+  expressMiddleware(apolloServer, {
+    context: createContext,
+  }),
+);
 
 app.listen(PORT, HOST, () => {
   console.log(`Server is listening on ${HOST}:${PORT}`);

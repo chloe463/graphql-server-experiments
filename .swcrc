@@ -1,19 +1,19 @@
 {
-  "$schema": "https://json.schemastore.org/swcrc",
+  "sourceMaps": "inline",
+  "module": {
+    "type": "es6",
+    "strictMode": true,
+    "noInterop": true
+  },
   "jsc": {
+    "externalHelpers": false,
+    "target": "esnext",
     "parser": {
       "syntax": "typescript",
-      "tsx": false,
+      "tsx": true,
       "decorators": false,
       "dynamicImport": true
     },
-    "target": "es2022",
-    "loose": false,
-    "minify": {
-      "compress": false,
-      "mangle": false
-    },
-    "externalHelpers": false,
     "transform": {
       "legacyDecorator": true,
       "decoratorMetadata": false,
@@ -26,13 +26,5 @@
       }
     },
     "keepClassNames": true
-  },
-  "module": {
-    "type": "commonjs",
-    "strictMode": true,
-    "noInterop": false
-  },
-  "minify": false,
-  "isModule": true,
-  "sourceMaps": "inline"
+  }
 }
