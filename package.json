@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "NODE_ENV=development bun run src/index.ts",
+    "dev": "NODE_ENV=development bun run --watch src/index.ts",
     "test": "TZ=Asia/Tokyo bun test",
     "typecheck": "tsc --noEmit",
     "tsconfig-to-swcrc": "tsconfig-to-swcconfig",
